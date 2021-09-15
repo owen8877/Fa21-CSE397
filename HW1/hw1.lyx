@@ -1,0 +1,1721 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{matlab-prettifier}
+\usepackage{lstautogobble}  % Fix relative indenting
+\usepackage{color}          % Code coloring
+% \usepackage{zi4}            % Nice font
+
+\definecolor{bluekeywords}{rgb}{0.13, 0.13, 1}
+\definecolor{greencomments}{rgb}{0, 0.5, 0}
+\definecolor{redstrings}{rgb}{0.9, 0, 0}
+\definecolor{graynumbers}{rgb}{0.5, 0.5, 0.5}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3.5cm
+\topmargin 4cm
+\rightmargin 3.5cm
+\bottommargin 4cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "/home/xdroid/.lyx/templates/math_shorthand.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Homework 1
+\end_layout
+
+\begin_layout Author
+Ziheng Chen zc5282
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $u\left(x,t\right)$
+\end_inset
+
+ denote the temperature field and 
+\begin_inset Formula $u\left(x,0\right):=m\left(x\right)$
+\end_inset
+
+ the initial temperature profile.
+ Given the length of the rod 
+\begin_inset Formula $L$
+\end_inset
+
+, the thermal diffusivity 
+\begin_inset Formula $k>0$
+\end_inset
+
+, the final time 
+\begin_inset Formula $T$
+\end_inset
+
+ , and homogeneous Dirichlet boundary conditions (
+\begin_inset Formula $u\left(0,t\right)=u\left(L,t\right)=0$
+\end_inset
+
+), the parameter-to-observable map 
+\begin_inset Formula $\cF\left(m\right)$
+\end_inset
+
+ can be written as 
+\begin_inset Formula 
+\[
+\cF\left(m\right):=u\left(x,T\right),
+\]
+
+\end_inset
+
+where for a given 
+\begin_inset Formula $m\left(x\right)$
+\end_inset
+
+, 
+\begin_inset Formula $u\left(x,T\right)$
+\end_inset
+
+ denotes the solution at the observation time 
+\begin_inset Formula $T$
+\end_inset
+
+ of the heat equation 
+\begin_inset Formula 
+\[
+\begin{cases}
+\frac{\partial u}{\partial t}-k\frac{\partial^{2}u}{\partial x^{2}}=0 & 0<x<L,0<t\le T,\\
+u\left(x,0\right)=m\left(x\right) & 0<x<L,\\
+u\left(0,t\right)=u\left(L,t\right)=0 & 0<t\le T.
+\end{cases}
+\]
+
+\end_inset
+
+We discretize the problem using 2nd order centered finite differences in
+ space and implicit Euler in time.
+ We denote with 
+\begin_inset Formula $h=\frac{L}{n_{x}}$
+\end_inset
+
+ the mesh size and with 
+\begin_inset Formula $\Delta t=\frac{T}{n_{t}}$
+\end_inset
+
+ the time step used in the discretization.
+ We would like to study the nature of the ill-posedness of the discretized
+ inverse problem 
+\begin_inset Formula $\boldsymbol{Fm}=\boldsymbol{d}$
+\end_inset
+
+, where 
+\begin_inset Formula $\boldsymbol{m}$
+\end_inset
+
+ is an 
+\begin_inset Formula $n_{x}-1$
+\end_inset
+
+ vector representing the discretized parameter field we wish to invert for
+ (i.e., the initial condition), and d is the corresponding data vector containing
+ the temperature observations at the grid points.
+ The 
+\begin_inset Formula $\left(n_{x}-1\right)\times\left(n_{x}-1\right)$
+\end_inset
+
+ matrix 
+\begin_inset Formula $\boldsymbol{F}$
+\end_inset
+
+, arising from the discretization of the parameter-to-observable map 
+\begin_inset Formula $\cF$
+\end_inset
+
+, takes the form 
+\begin_inset Formula 
+\[
+\boldsymbol{F}=\left(\boldsymbol{I}+\Delta t\boldsymbol{K}\right)^{-n_{t}},
+\]
+
+\end_inset
+
+where the discretized diffusion operator 
+\begin_inset Formula $\boldsymbol{K}$
+\end_inset
+
+ is an 
+\begin_inset Formula $\left(n_{x}-1\right)\times\left(n_{x}-1\right)$
+\end_inset
+
+ matrix given by
+\begin_inset Formula 
+\[
+\boldsymbol{K}=\frac{k}{h^{2}}\left[\begin{array}{ccccc}
+2 & -1\\
+-1 & 2 & -1\\
+ & \dots & \dots & \dots\\
+ &  & -1 & 2 & -1\\
+ &  &  & -1 & 2
+\end{array}\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+First, we work on the spectrum of the operator 
+\begin_inset Formula $\cF$
+\end_inset
+
+.
+ We introduce the Fourier transform
+\begin_inset Formula 
+\[
+\widehat{u}_{l}:=\frac{1}{L}\int_{0}^{L}u\left(x\right)e^{-\frac{\pi i}{L}lx}\d x
+\]
+
+\end_inset
+
+accompanied by the inverse transform
+\begin_inset Formula 
+\[
+u\left(x\right)=\sum_{l=-\infty}^{\infty}\widehat{u}_{l}e^{\frac{\pi i}{L}lx}.
+\]
+
+\end_inset
+
+For the eigen pair 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+ s.t.
+ 
+\begin_inset Formula $\cF v=\lambda v$
+\end_inset
+
+, we applied the aforementioned Fourier transform to 
+\begin_inset Formula $v$
+\end_inset
+
+ to obtain
+\begin_inset Formula 
+\begin{equation}
+\begin{cases}
+\frac{\partial\widehat{u}}{\partial t}-k\widehat{\frac{\partial^{2}u}{\partial x^{2}}}=0 & 0<t\le T,\\
+\widehat{u}\left(0\right)=\widehat{m},\\
+\widehat{u}\left(T\right)=\widehat{v}\\
+u\left(0,t\right)=u\left(L,t\right)=0 & 0<t\le T.
+\end{cases}\label{eq:p1a-heat-eqn}
+\end{equation}
+
+\end_inset
+
+For the 
+\begin_inset Formula $\widehat{\frac{\partial^{2}u}{\partial x^{2}}}$
+\end_inset
+
+ term, we consider the 
+\begin_inset Formula $l$
+\end_inset
+
+-th component which reads
+\begin_inset Formula 
+\begin{align*}
+\left(\widehat{\frac{\partial^{2}u}{\partial x^{2}}}\right)_{l} & =\frac{1}{L}\int_{0}^{L}\frac{\partial^{2}u}{\partial x^{2}}\left(x,t\right)e^{-\frac{\pi i}{L}lx}\d x\\
+ & =\left[\frac{1}{L}\frac{\partial u}{\partial x}\left(x,t\right)e^{-\frac{\pi i}{L}lx}\right]|_{0}^{L}+\frac{\pi il}{L^{2}}\int_{0}^{L}\frac{\partial u}{\partial x}\left(x,t\right)e^{-\frac{\pi i}{L}lx}\d x\\
+ & =\frac{1}{L}\left(\left(-1\right)^{l}\frac{\partial u}{\partial x}\left(L,t\right)-\frac{\partial u}{\partial x}\left(0,t\right)\right)+\frac{\pi il}{L^{2}}\left[u\left(x,t\right)e^{-\frac{\pi i}{L}lx}\right]|_{0}^{L}-\frac{\pi^{2}l^{2}}{L^{3}}\int_{0}^{L}u\left(x,t\right)e^{-\frac{\pi i}{L}lx}\d x\\
+ & =-\pi^{2}l^{2}/L^{2}\widehat{u}_{l}
+\end{align*}
+
+\end_inset
+
+(assuming that the spatial derivative is periodic on the boundaries).
+ Then Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1a-heat-eqn"
+
+\end_inset
+
+ reads
+\begin_inset Formula 
+\[
+\partial_{t}\widehat{u}_{l}+\pi^{2}l^{2}k/L^{2}\widehat{u}_{l}=0
+\]
+
+\end_inset
+
+leading to a solution
+\begin_inset Formula 
+\[
+\widehat{u}_{l}\left(T\right)=e^{-\pi^{2}l^{2}kT/L^{2}}\widehat{u}_{l}\left(0\right).
+\]
+
+\end_inset
+
+Since 
+\begin_inset Formula $\widehat{v}=\widehat{u}\left(0\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\widehat{\cF v}=\widehat{u}\left(T\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\widehat{\cdot}$
+\end_inset
+
+ is a linear transform, we have
+\begin_inset Formula 
+\[
+\lambda=e^{-\pi^{2}l^{2}kT/L^{2}}\ \text{for}\ \widehat{v}_{l}\neq0.
+\]
+
+\end_inset
+
+So, in general, the eigenvalue reads
+\begin_inset Formula 
+\begin{equation}
+\lambda_{l}=\exp\left[-kT\left(\frac{\pi l}{L}\right)^{2}\right]\label{eq:p1a-eigenvalue}
+\end{equation}
+
+\end_inset
+
+ with 
+\begin_inset Formula 
+\[
+\left(\widehat{v_{l}}\right)_{m}=\begin{cases}
+\frac{m}{l}C & m=\pm l\\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $C$
+\end_inset
+
+ is to be determined to make 
+\begin_inset Formula $v_{l}$
+\end_inset
+
+ normalize: for 
+\begin_inset Formula $\left(\widehat{v_{l}}\right)_{l}=-\left(\widehat{v_{l}}\right)_{-l}=C$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+v_{l}\left(x\right)=C\left(e^{\frac{\pi i}{L}lx}-e^{-\frac{\pi i}{L}lx}\right)=2Ci\sin\left(\frac{\pi lx}{L}\right)
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $\norm{v_{l}}_{L^{2}}=\sqrt{-2LC^{2}}$
+\end_inset
+
+, so we pick 
+\begin_inset Formula $C=-\frac{i}{\sqrt{2L}}$
+\end_inset
+
+, leading to
+\begin_inset Formula 
+\[
+v_{l}=\sqrt{\frac{2}{L}}\sin\left(\frac{\pi lx}{L}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+To derive the eigen pairs of the discrete operator 
+\begin_inset Formula $\boldsymbol{F}$
+\end_inset
+
+, we first work on 
+\begin_inset Formula $\boldsymbol{K}$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\boldsymbol{K}$
+\end_inset
+
+ is finite dimensional, we can verify the eigenvectors to assert that they
+ consist the full spectrum of 
+\begin_inset Formula $\boldsymbol{K}$
+\end_inset
+
+.
+ Define 
+\begin_inset Formula $\boldsymbol{u}_{i}$
+\end_inset
+
+ is a 
+\begin_inset Formula $\left(n_{x}-1\right)$
+\end_inset
+
+-dim vector, given by
+\begin_inset Formula 
+\[
+\left[\boldsymbol{u}_{i}\right]_{j}=\sqrt{\frac{2}{L}}\sin\left(\pi i\frac{jh}{L}\right),
+\]
+
+\end_inset
+
+a direct calculation gives
+\begin_inset Formula 
+\begin{align*}
+\left[\boldsymbol{K}\boldsymbol{u}_{i}\right]_{j} & =\frac{k}{h^{2}}\left(2\left[\boldsymbol{u}_{i}\right]_{j}-\left[\boldsymbol{u}_{i}\right]_{j+1}-\left[\boldsymbol{u}_{i}\right]_{j-1}\right)\\
+ & =\frac{k}{h^{2}}\cdot\sqrt{\frac{2}{L}}\left(2\sin\left(\pi i\frac{jh}{L}\right)-\sin\left(\pi i\frac{\left(j+1\right)h}{L}\right)-\sin\left(\pi i\frac{\left(j-1\right)h}{L}\right)\right)\\
+ & =\frac{k}{h^{2}}\cdot\sqrt{\frac{2}{L}}\left(2\sin\left(\pi i\frac{jh}{L}\right)-2\sin\left(\pi i\frac{jh}{L}\right)\cos\left(\pi i\frac{h}{L}\right)\right)\\
+ & =\frac{2k}{h^{2}}\sqrt{\frac{2}{L}}\sin\left(\pi i\frac{jh}{L}\right)\cdot2\sin^{2}\left(\frac{\pi ih}{2L}\right)\\
+ & =\frac{4k}{h^{2}}\sin^{2}\left(\frac{\pi ih}{2L}\right)\left[\boldsymbol{u}_{i}\right]_{j}
+\end{align*}
+
+\end_inset
+
+(we naturally define 
+\begin_inset Formula $\left[\boldsymbol{u}_{i}\right]_{0}=\left[\boldsymbol{u}_{i}\right]_{n_{x}}=0$
+\end_inset
+
+), thus 
+\begin_inset Formula $\boldsymbol{u}_{i}$
+\end_inset
+
+ is indeed an eigenvector associated with 
+\begin_inset Formula $\mu_{i}=\frac{4k}{h^{2}}\sin^{2}\left(\frac{\pi ih}{2L}\right).$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+With that being derived, i.e.
+ 
+\begin_inset Formula 
+\[
+\boldsymbol{K}=\boldsymbol{U}\boldsymbol{\mu}\boldsymbol{U}^{-1}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\boldsymbol{U}=\left[\boldsymbol{u}_{1},\dots,\boldsymbol{u}_{n_{x}-1}\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{\mu}=\text{diag}\left(\mu_{1},\dots,\mu_{n_{x}-1}\right)$
+\end_inset
+
+, we can move on to the matrix 
+\begin_inset Formula $\boldsymbol{F}$
+\end_inset
+
+.
+ In fact, 
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{F} & =\left(\boldsymbol{I}+\Delta t\boldsymbol{K}\right)^{-n_{t}}\\
+ & =\left(\boldsymbol{I}+\Delta t\boldsymbol{U}\boldsymbol{\mu}\boldsymbol{U}^{-1}\right)^{-n_{t}}\\
+ & =\left[\boldsymbol{U}\left(\boldsymbol{I}+\Delta t\boldsymbol{\mu}\right)\boldsymbol{U}^{-1}\right]^{-n_{t}}\\
+ & =\boldsymbol{U}\left(\boldsymbol{I}+\Delta t\boldsymbol{\mu}\right)^{-n_{t}}\boldsymbol{U}^{-1}.
+\end{align*}
+
+\end_inset
+
+Therefore, 
+\begin_inset Formula $\boldsymbol{u}_{i}$
+\end_inset
+
+ also happens to be an eigenvector of 
+\begin_inset Formula $\boldsymbol{F}$
+\end_inset
+
+ with associated eigenvalue being
+\begin_inset Formula 
+\[
+\widetilde{\lambda}_{i}=\left(1+\Delta t\mu_{i}\right)^{-n_{t}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+We show the decay of eigenvalues in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p1c"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ as depicted in Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1a-eigenvalue"
+
+\end_inset
+
+, which shows that the spectrum decays much faster for large 
+\begin_inset Formula $k$
+\end_inset
+
+-s and thus leading to a stronger stiffness.
+ This is due to the quadratic coefficient 
+\begin_inset Formula $kT\left(\frac{\pi}{L}\right)^{2}$
+\end_inset
+
+ scales with 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename p1c.eps
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Decay of the eigenvalues to the continuous operator.
+ 
+\begin_inset Formula $T=1,L=1,n_{x}=n_{t}=100$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p1c"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+We compare the spectrum of the discrete operator against the one of the
+ continuous operator, shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p1d"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ As the solution increases, the spectrum seems to 
+\begin_inset Quotes eld
+\end_inset
+
+converge
+\begin_inset Quotes erd
+\end_inset
+
+ to the continuous one in the way that the curves are getting closer.
+ This is because the approximation of the forward operator is getting finer
+ and finer as we increase the resolution.
+\begin_inset Newline newline
+\end_inset
+
+On the other hand, no matter how large 
+\begin_inset Formula $n_{x}$
+\end_inset
+
+ and 
+\begin_inset Formula $n_{t}$
+\end_inset
+
+ are, the curve always flatten to the right.
+ To explain this, let's fix 
+\begin_inset Formula $n_{x}=n_{t}=N$
+\end_inset
+
+.
+ Then for the smallest eigenvalue, we have
+\begin_inset Formula 
+\begin{align*}
+\widetilde{\lambda}_{N-1} & =\left(1+\Delta t\mu_{N-1}\right)^{-N}\\
+ & =\left(1+\frac{T}{N}\mu_{N-1}\right)^{-N}\\
+ & \approx\exp\left[-T\mu_{N-1}\right]\\
+ & =\exp\left[-T\frac{4k}{h^{2}}\sin^{2}\left(\frac{\pi h\left(N-1\right)}{2L}\right)\right]\\
+ & \approx\exp\left[-\frac{4kTN^{2}}{L^{2}}\right].
+\end{align*}
+
+\end_inset
+
+To some extent, one can argue that the discretization has some regularization
+ effect that 
+\begin_inset Formula $\min\widetilde{\lambda}=\widetilde{\lambda}_{N-1}$
+\end_inset
+
+ is strictly positive, while one cannot ignore the fact that this lower
+ bound is exponentially decaying w.r.t.
+ 
+\begin_inset Formula $N$
+\end_inset
+
+, so as the approximation is getting better and better, the additional regulariz
+ation goes away.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename p1d.eps
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Decay of the eigenvalues to the discrete operator as well as those to the
+ continuous operator.
+ 
+\begin_inset Formula $L=1,T=0.1,k=0.01$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p1d"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Here we wish to study ill-posedness and regularization for an inverse problem
+ governed by Poisson’s equation, specifically the axial deformation of an
+ elastic rod of length 
+\begin_inset Formula $L$
+\end_inset
+
+.
+ The inverse problem is to infer the distributed body force (per unit length)
+ 
+\begin_inset Formula $m\left(x\right)$
+\end_inset
+
+, from observations of the axial displacement 
+\begin_inset Formula $u\left(x\right)$
+\end_inset
+
+ everywhere along the length of the rod (even this problem is ill-posed!).
+ Given 
+\begin_inset Formula $m\left(x\right)$
+\end_inset
+
+, we can find 
+\begin_inset Formula $u\left(x\right)$
+\end_inset
+
+ by solving the forward elasticity problem 
+\begin_inset Formula 
+\[
+\begin{cases}
+-k\frac{\partial^{2}u}{\partial x^{2}}=m\left(x\right) & 0<x<L,\\
+u\left(0\right)=u\left(L\right)=0
+\end{cases}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $k$
+\end_inset
+
+ is the elastic modulus of the rod, and homogeneous Dirichlet boundary condition
+s (i.e., the rod is fixed) are imposed at both ends.
+ The parameter-to-observable map can thus be written as 
+\begin_inset Formula $\cF\left(m\right):=u\left(x\right)$
+\end_inset
+
+ for a given 
+\begin_inset Formula $m\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+First, we inspect the spectrum of 
+\begin_inset Formula $\cF$
+\end_inset
+
+.
+ By applying the same Fourier transform idea, it can be shown that the eigenvect
+ors 
+\begin_inset Formula $v_{i}\left(x\right)$
+\end_inset
+
+ are shared.
+ In fact, for 
+\begin_inset Formula $m\left(x\right)=v_{i}\left(x\right)=\sqrt{\frac{2}{L}}\sin\left(\frac{\pi ix}{L}\right)$
+\end_inset
+
+, we can write the solution in closed form:
+\begin_inset Formula 
+\[
+u\left(x\right)=\frac{\sqrt{2L^{3}}}{i^{2}\pi^{2}k}\sin\left(\frac{\pi ix}{L}\right).
+\]
+
+\end_inset
+
+Thus, the eigenvalue reads
+\begin_inset Formula 
+\[
+\lambda_{i}=\frac{\frac{\sqrt{2L^{3}}}{i^{2}\pi^{2}k}}{\sqrt{\frac{2}{L}}}=\frac{L^{2}}{i^{2}\pi^{2}k}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+In this setting, the discrete operator 
+\begin_inset Formula $\boldsymbol{F}=\inv{\boldsymbol{K}}$
+\end_inset
+
+, so the eigenvalues of the discrete operator reads
+\begin_inset Formula 
+\[
+\widetilde{\lambda}_{i}=\frac{1}{\mu_{i}}=\frac{h^{2}}{4k}\sin^{-2}\left(\frac{\pi ih}{2L}\right).
+\]
+
+\end_inset
+
+We provide a comparison between the continuous and discrete operator in
+ Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2b"
+
+\end_inset
+
+.
+ It seems that the spectrum is quite close for small indices and start to
+ differ a bit as the indices becomes larger.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename p2b.eps
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Decay of the eigenvalues to the discrete operator as well as those to the
+ continuous operator.
+ 
+\begin_inset Formula $L=1,k=1,n_{x}=100$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p2b"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+We explore the results produced by the naive inversion method in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2c-n=10"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2c-n=30"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2c-n=100"
+
+\end_inset
+
+.
+ Although the noise are invisible to naked eyes, due to the instability
+ nature, the direct inversion method fails in a noisy setting.
+ A general trend is that the error in the reconstructed data grows in magnitude
+ as the discretization gets finer.
+ Also, larger 
+\begin_inset Formula $k$
+\end_inset
+
+-s are definitely making the inversion even harder.
+ We also experiment with two different noises: gaussian type 
+\begin_inset Formula $\cN\left(0,\sigma\right)$
+\end_inset
+
+ and poisson type 
+\begin_inset Formula $\sigma\left[\text{Poisson}\left(\lambda=1\right)-1\right]$
+\end_inset
+
+.
+ It seems that the inversion fails no matter which noises are assumed for
+ the data.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename p2c-n=10-inversion.eps
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparison between true and reconstructed data.
+ 
+\begin_inset Formula $k=1,L=1,n=10$
+\end_inset
+
+, noise type: gaussian.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p2c-n=10"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename p2c-n=30-inversion-gaussian.eps
+	width 33line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename p2c-n=30-inversion-poisson.eps
+	width 33line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename p2c-n=30-inversion-gaussian-large-k.eps
+	width 33line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparison between true and reconstructed data.
+ 
+\begin_inset Formula $L=1,n=30$
+\end_inset
+
+.
+ Left: noise type: gaussian with 
+\begin_inset Formula $k=1$
+\end_inset
+
+.
+ Middle: noise type: poisson with 
+\begin_inset Formula $k=1$
+\end_inset
+
+.
+ Right: noise type: gaussian with 
+\begin_inset Formula $k=10.$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p2c-n=30"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename p2c-n=100-inversion-gaussian.eps
+	width 33line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename p2c-n=100-inversion-poisson.eps
+	width 33line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename p2c-n=100-inversion-gaussian-large-k.eps
+	width 33line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparison between true and reconstructed data.
+ 
+\begin_inset Formula $L=1,n=100$
+\end_inset
+
+.
+ Left: noise type: gaussian with 
+\begin_inset Formula $k=1$
+\end_inset
+
+.
+ Middle: noise type: poisson with 
+\begin_inset Formula $k=1$
+\end_inset
+
+.
+ Right: noise type: gaussian with 
+\begin_inset Formula $k=10.$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p2c-n=100"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The regularized least square solution reads
+\begin_inset Formula 
+\[
+\boldsymbol{m}_{\alpha}=\left(\boldsymbol{F}^{T}\boldsymbol{F}+\alpha\boldsymbol{I}\right)^{-1}\left(\boldsymbol{F}^{T}d\right).
+\]
+
+\end_inset
+
+We compare different solutions under different choices of 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2d"
+
+\end_inset
+
+.
+ It seems the one produced by 
+\begin_inset Formula $\alpha_{E}=10^{-6}$
+\end_inset
+
+ is close to the ground truth while less oscillatory.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename p2d.eps
+	width 75line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparison between ground truth solution and the regularized ones under
+ different 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ 
+\begin_inset Formula $L=1,k=1,n_{x}=200.$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p2d"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+We can also utilize the L-curve which plot the norm of the model parameter
+ 
+\begin_inset Formula $\norm m$
+\end_inset
+
+ against the norm of error in observation 
+\begin_inset Formula $\norm{\cF m-d},$
+\end_inset
+
+shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2e"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ It seems that 
+\begin_inset Formula $\alpha_{L}=10^{-4}$
+\end_inset
+
+ is a decent choice for balancing the two components.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename p2e.eps
+	width 75line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+L-curve criterion for Tikhonov regularization.
+ 
+\begin_inset Formula $L=1,k=1,n_{x}=200.$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p2e"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Another approach is to use the Morozov's criterion which finds the maximum
+ 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ s.t.
+ the norm of error reaches the empirical expectation 
+\begin_inset Formula $\delta=\norm{\eta}=\sqrt{n_{x}}\sigma$
+\end_inset
+
+ in this case.
+ Shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2f"
+
+\end_inset
+
+, the dashed line indicates the 
+\begin_inset Formula $\delta$
+\end_inset
+
+ level and the optimal 
+\begin_inset Formula $\alpha_{M}=10^{-6}$
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename p2f.eps
+	width 75line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Morozov's criterion for Tikhonov regularization.
+ 
+\begin_inset Formula $L=1,k=1,n_{x}=200.$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p2f"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+We can also look at the 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ norm error of the reconstruction, shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2g"
+
+\end_inset
+
+.
+ It seems 
+\begin_inset Formula $10^{-6}\le\alpha_{L^{2}}\le10^{-5}$
+\end_inset
+
+ is the range where the 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+ norm is minimized.
+ Compared with the other three criterion, the 
+\begin_inset Quotes eld
+\end_inset
+
+eyeball
+\begin_inset Quotes erd
+\end_inset
+
+, Morozov's and 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+ norm criterion yields similar answers while the L-curve criterion perfers
+ a much larger 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, probably due to the fact that the shape of the L-curve really depends
+ on the scale of x and y coordinates and is thus more unstable.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename p2g.eps
+	width 75line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Error in the model parameter for Tikhonov regularization.
+ 
+\begin_inset Formula $L=1,k=1,n_{x}=200.$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p2g"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Here we will study the stability of the inverse problem for the wave equation
+ through a model 1D problem.
+ The forward problem is to find the transverse displacement 
+\begin_inset Formula $u\left(x,t\right)$
+\end_inset
+
+ of a cable of length 
+\begin_inset Formula $L$
+\end_inset
+
+, tension 
+\begin_inset Formula $k$
+\end_inset
+
+, and mass density 
+\begin_inset Formula $\rho$
+\end_inset
+
+, fixed at both ends (
+\begin_inset Formula $u\left(0,t\right)=u\left(L,t\right)=0$
+\end_inset
+
+), that is initially at rest (
+\begin_inset Formula $\dot{u}\left(x,0\right)=0$
+\end_inset
+
+) and is plucked with an initial displacement of 
+\begin_inset Formula $u\left(x,0\right)=m\left(x\right)$
+\end_inset
+
+.
+ In other words, given 
+\begin_inset Formula $m\left(x\right)$
+\end_inset
+
+, solve 
+\begin_inset Formula 
+\[
+\begin{cases}
+\partial_{t}^{2}u-c^{2}\partial_{x}^{2}u=0 & 0<x<L,0<t\le T,\\
+u\left(x,0\right)=m\left(x\right) & 0<x<L,\\
+\partial_{t}u\left(x,0\right)=0 & 0<x<L,\\
+u\left(0,t\right)=u\left(L,t\right)=0 & 0<t\le T
+\end{cases}
+\]
+
+\end_inset
+
+for the displacement field 
+\begin_inset Formula $u\left(x,t\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $c:=k/\rho$
+\end_inset
+
+ is the wave propagation speed.
+ The goal of the inverse problem is to infer the initial displacement 
+\begin_inset Formula $m\left(x\right)$
+\end_inset
+
+ from observation of the cable’s position 
+\begin_inset Formula $u\left(x,T\right)$
+\end_inset
+
+ at a later time 
+\begin_inset Formula $t=T$
+\end_inset
+
+ .
+ Thus the parameter-to-observable map is given by 
+\begin_inset Formula $\cF\left(m\right):=u\left(x,T\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+We use the same eigenvectors to compute the eigenvalues of 
+\begin_inset Formula $\cF$
+\end_inset
+
+.
+ Fix 
+\begin_inset Formula $v_{i}\left(x\right)=\sqrt{\frac{2}{L}}\sin\left(\frac{\pi ix}{L}\right)$
+\end_inset
+
+ as the initial condition and we take the ansatz that the solution 
+\begin_inset Formula $u\left(t,x\right)=U\left(t\right)v_{i}\left(x\right)$
+\end_inset
+
+, leading to
+\begin_inset Formula 
+\begin{equation}
+\begin{cases}
+U''+c^{2}\cdot\frac{\pi^{2}i^{2}}{L^{2}}U=0,\\
+U'\left(0\right)=0.
+\end{cases}\label{eq:p3a-eqn for time}
+\end{equation}
+
+\end_inset
+
+Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p3a-eqn for time"
+
+\end_inset
+
+ admits the solution 
+\begin_inset Formula $U\left(t\right)=\cos\left(\frac{c\pi i}{L}t\right)$
+\end_inset
+
+, thus the eigenvalue reads
+\begin_inset Formula 
+\begin{equation}
+\lambda_{i}=U\left(T\right)=\cos\left(\frac{c\pi iT}{L}\right).\label{eq:p3a-eigenvalue}
+\end{equation}
+
+\end_inset
+
+Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p3a-eigenvalue"
+
+\end_inset
+
+ reveals that the forward operator 
+\begin_inset Formula $\cF$
+\end_inset
+
+ may have non-trivial null space if 
+\begin_inset Formula $\frac{ciT}{L}$
+\end_inset
+
+ takes half integers, i.e.
+ the forward operator is not invertible even without the interference of
+ noise!
+\begin_inset Newline newline
+\end_inset
+
+On the other hand, if all eigenvalues are exactly 1, the operator 
+\begin_inset Formula $\cF$
+\end_inset
+
+ is the trivial identity operator so that the initial condition to be inferred
+ 
+\begin_inset Formula $m=d.$
+\end_inset
+
+ To make this happen, we require 
+\begin_inset Formula $\frac{c\pi iT}{L}\in2\pi\bZ$
+\end_inset
+
+ for every 
+\begin_inset Formula $i$
+\end_inset
+
+, which means
+\begin_inset Formula 
+\begin{equation}
+\frac{cT}{2L}\in\bZ\implies T=\frac{2kL}{c},k=1,2,3,\dots.\label{eq:p3a-time for perfect inference}
+\end{equation}
+
+\end_inset
+
+Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p3a-time for perfect inference"
+
+\end_inset
+
+ has a strong physical interpretation: it is exactly the time for the wave
+ to travel to the other boundary, bouncing back and once again before reaching
+ the starting point.
+\end_layout
+
+\begin_layout Enumerate
+If observations can only be made near 
+\begin_inset Formula $T^{*}=\frac{L}{2c}$
+\end_inset
+
+, then the eigenvalues read
+\begin_inset Formula 
+\[
+\lambda_{i}=\cos\left(\frac{c\pi iT^{*}}{L}\right)=\cos\left(\frac{\pi i}{2}\right),
+\]
+
+\end_inset
+
+so for eigenvectors 
+\begin_inset Formula $v_{i},i$
+\end_inset
+
+ being odd numbers, the mapping vanishes and no information can be recovered
+ (even if we can, it is highly unstable).
+\begin_inset Newline newline
+\end_inset
+
+Nevertheless, consider a similar mapping
+\begin_inset Formula 
+\[
+\cG\left(m\right):=\partial_{t}u\left(x,T\right).
+\]
+
+\end_inset
+
+Then 
+\begin_inset Formula $\cG\left(v_{i}\right)$
+\end_inset
+
+ will no longer vanish at the aforementioned moments since there will be
+ a net velocity.
+ Nevertheless, 
+\begin_inset Formula $\cG$
+\end_inset
+
+ being a potentially non-linear operator makes the inference a bit harder.
+\end_layout
+
+\begin_layout Enumerate
+In the real world, these following factors may inhibit our reconstruction:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+the error when measuring the final position 
+\begin_inset Formula $u\left(x,T\right)$
+\end_inset
+
+ due to device failure;
+\end_layout
+
+\begin_layout Enumerate
+even for precise measurement, we can only take finite points instead of
+ recording the curve as a mathematically continuous object;
+\end_layout
+
+\begin_layout Enumerate
+inperfection of the cable that it is not unifornm so that the mass density
+ 
+\begin_inset Formula $\rho$
+\end_inset
+
+ depends on the position along the cable.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_body
+\end_document
