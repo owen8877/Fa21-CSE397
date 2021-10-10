@@ -1,0 +1,334 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{matlab-prettifier}
+\usepackage{lstautogobble}  % Fix relative indenting
+\usepackage{color}          % Code coloring
+% \usepackage{zi4}            % Nice font
+
+\definecolor{bluekeywords}{rgb}{0.13, 0.13, 1}
+\definecolor{greencomments}{rgb}{0, 0.5, 0}
+\definecolor{redstrings}{rgb}{0.9, 0, 0}
+\definecolor{graynumbers}{rgb}{0.5, 0.5, 0.5}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3.5cm
+\topmargin 4cm
+\rightmargin 3.5cm
+\bottommargin 4cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "/home/xdroid/.lyx/templates/math_shorthand.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Homework 2
+\end_layout
+
+\begin_layout Author
+Ziheng Chen zc5282
+\end_layout
+
+\begin_layout Enumerate
+Derivation of the optimization problem
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Show that the length of the chain, 
+\begin_inset Formula $L\left(u\right)$
+\end_inset
+
+, is given by
+\begin_inset Formula 
+\begin{equation}
+L\left(u\right)=\int_{0}^{1}\sqrt{1+\left(u'\right)^{2}}\d x.\label{eq:p1-a}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+In fact, consider the infinitesimal patch of the chain from 
+\begin_inset Formula $\left(x,u\right)$
+\end_inset
+
+ to 
+\begin_inset Formula $\left(x+\d x,u+\d u\right)$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $u$
+\end_inset
+
+ is assumed to be smooth, so this patch can be approximated by a straight
+ segment which has length
+\begin_inset Formula 
+\begin{equation}
+\d L=\sqrt{\d x^{2}+\d u^{2}}=\sqrt{1+\left(\frac{\d u}{\d x}\right)^{2}}\d x=\sqrt{1+\left(u'\right)^{2}}\d x.\label{eq:p1-a-diff-form}
+\end{equation}
+
+\end_inset
+
+Thus, Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1-a"
+
+\end_inset
+
+ is a direct consequence if we integrate Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1-a-diff-form"
+
+\end_inset
+
+ against 
+\begin_inset Formula $x\in\left[0,1\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Show that the potential energy of the chain, 
+\begin_inset Formula $E\left(u\right)$
+\end_inset
+
+, is given by
+\begin_inset Formula 
+\begin{equation}
+E\left(u\right)=\int_{0}^{1}\rho gu\sqrt{1+\left(u'\right)^{2}}\d x.\label{eq:p1-b}
+\end{equation}
+
+\end_inset
+
+For convenience, let 
+\begin_inset Formula $\rho g=1$
+\end_inset
+
+ for al subsequent problems.
+\end_layout
+
+\end_inset
+
+In fact, consider the patch of the chain from 
+\begin_inset Formula $\left(x,u\right)$
+\end_inset
+
+ to 
+\begin_inset Formula $\left(x+\d x,u+\d u\right)$
+\end_inset
+
+ once more.
+ We approximate this patch by a straight segment which has length 
+\begin_inset Formula $\d L=\sqrt{1+\left(u'\right)^{2}}\d x$
+\end_inset
+
+ and the center is at 
+\begin_inset Formula $\left(x+\frac{1}{2}\d x,u+\frac{1}{2}\d u\right)$
+\end_inset
+
+.
+ Thus, the potential energy of the patch, defined as the product of mass,
+ gravity constant, and altitude, reads
+\begin_inset Formula 
+\begin{align}
+\d E & =\left(\rho\d L\right)g\left(u+\frac{1}{2}\d u\right)\nonumber \\
+ & =\rho ug\d L+\cO\left(\d x^{2}\right).\label{eq:p1-b-diff-form}
+\end{align}
+
+\end_inset
+
+Thus, Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1-b"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is a direct consequence if we integrate Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1-b-diff-form"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ against 
+\begin_inset Formula $x\in\left[0,1\right]$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+We refer to the jupyter notebook for the code implementation.
+\end_layout
+
+\begin_layout Enumerate
+For b) part, the convergence curve has slope 1 on the log-log scale plot,
+ which agrees with the theoretical estimate that steepest descent is of
+ linear convergence.
+ For d) part, we fit a line between 
+\begin_inset Formula $\log\left[J\left(u^{\left(k+1\right)}\right)-J\left(u^{*}\right)\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $\log\left[J\left(u^{\left(k\right)}\right)-J\left(u^{*}\right)\right]$
+\end_inset
+
+ and the slope reads 1.25, which means Newton-CG converges super-linearly
+ and is faster than steepest descent and BFGS.
+ The scipy implementation of Newton-CG chooses the following forcing term
+\begin_inset Formula 
+\[
+\eta_{k}=\min\left(0.5,\norm{g_{k}}^{1/2}\right)
+\]
+
+\end_inset
+
+in the CG stopping criterion and leads to a super-linear convergence rate,
+ which agrees with our observation.
+\end_layout
+
+\end_body
+\end_document
