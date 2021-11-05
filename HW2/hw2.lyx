@@ -136,7 +136,7 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Show that the length of the chain, 
@@ -154,6 +154,10 @@ L\left(u\right)=\int_{0}^{1}\sqrt{1+\left(u'\right)^{2}}\d x.\label{eq:p1-a}
 
 \end_layout
 
+\end_inset
+
+
+\begin_inset Newline newline
 \end_inset
 
 In fact, consider the infinitesimal patch of the chain from 
@@ -218,7 +222,7 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Show that the potential energy of the chain, 
@@ -240,6 +244,10 @@ For convenience, let
  for al subsequent problems.
 \end_layout
 
+\end_inset
+
+
+\begin_inset Newline newline
 \end_inset
 
 In fact, consider the patch of the chain from 
@@ -305,10 +313,61 @@ We refer to the jupyter notebook for the code implementation.
 \end_layout
 
 \begin_layout Enumerate
-For b) part, the convergence curve has slope 1 on the log-log scale plot,
- which agrees with the theoretical estimate that steepest descent is of
+See jupyter notebook.
+\end_layout
+
+\begin_layout Enumerate
+For b) part, the convergence curve has slope 1 on the log-log scale plot
+ (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:4b"
+
+\end_inset
+
+), which agrees with the theoretical estimate that steepest descent is of
  linear convergence.
- For d) part, we fit a line between 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename 4steepest descent.eps
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:4b"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+For d) part, we fit a line between 
 \begin_inset Formula $\log\left[J\left(u^{\left(k+1\right)}\right)-J\left(u^{*}\right)\right]$
 \end_inset
 
@@ -327,8 +386,179 @@ For b) part, the convergence curve has slope 1 on the log-log scale plot,
 \end_inset
 
 in the CG stopping criterion and leads to a super-linear convergence rate,
- which agrees with our observation.
+ which agrees with our observation (see Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:4d"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename 4Newton-CG.eps
+	width 100line%
+
+\end_inset
+
+
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:4d"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+We explore the mesh dependency from the following arguments:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+As shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:5a"
+
+\end_inset
+
+, as the mesh gets finer, the number of iterations needed to converge (stopping
+ criterion in terms of norm of gradients) increases significantly.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename 5a.eps
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:5a"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+As shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:5b"
+
+\end_inset
+
+, the iterations for Newton-CG to converge doesn't change significantly
+ as the mesh gets finer.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename 5b.eps
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:5b"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \end_body
 \end_document

@@ -1,0 +1,1122 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{matlab-prettifier}
+\usepackage{lstautogobble}  % Fix relative indenting
+\usepackage{color}          % Code coloring
+% \usepackage{zi4}            % Nice font
+
+\definecolor{bluekeywords}{rgb}{0.13, 0.13, 1}
+\definecolor{greencomments}{rgb}{0, 0.5, 0}
+\definecolor{redstrings}{rgb}{0.9, 0, 0}
+\definecolor{graynumbers}{rgb}{0.5, 0.5, 0.5}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3.5cm
+\topmargin 4cm
+\rightmargin 3.5cm
+\bottommargin 4cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "/home/xdroid/.lyx/templates/math_shorthand.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Homework 3
+\end_layout
+
+\begin_layout Author
+Ziheng Chen zc5282
+\end_layout
+
+\begin_layout Enumerate
+Show some properties of the regularized problem:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+For both
+\begin_inset Formula 
+\begin{align*}
+\cF_{TN}\left(u\right) & :=\cF_{LS}\left(u\right)+\cR_{TN}\left(u\right)=\frac{1}{2}\int_{\Omega}\left(u-d\right)^{2}+\frac{\alpha}{2}\int_{\Omega}\nabla u\cdot\nabla u,\\
+\cF_{TV}^{\delta}\left(u\right) & :=\cF_{LS}\left(u\right)+\cR_{TV}^{\delta}\left(u\right)=\frac{1}{2}\int_{\Omega}\left(u-d\right)^{2}+\alpha\int_{\Omega}\left(\nabla u\cdot\nabla u+\delta\right)^{\frac{1}{2}},
+\end{align*}
+
+\end_inset
+
+derive the first-order necessary condition for optimality.
+ Use 
+\begin_inset Formula $\widehat{u}$
+\end_inset
+
+ to represent the variation of 
+\begin_inset Formula $u$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+For the perturbation 
+\begin_inset Formula $u\to u+\epsilon\widehat{u}$
+\end_inset
+
+, we have a direct calculation
+\begin_inset Formula 
+\begin{align*}
+\cF_{TN}\left(u+\epsilon\widehat{u}\right)-\cF\left(u\right) & =\frac{1}{2}\int_{\Omega}\left[\left(u+\epsilon\widehat{u}-d\right)^{2}-\left(u-d\right)^{2}\right]+\frac{\alpha}{2}\int_{\Omega}\left[\nabla\left(u+\epsilon\widehat{u}\right)\cdot\nabla\left(u+\epsilon\widehat{u}\right)-\nabla u\cdot\nabla u\right]\\
+ & =\epsilon\left[\int_{\Omega}\widehat{u}\left(u-d\right)+\alpha\int_{\Omega}\nabla\widehat{u}\cdot\nabla u\right]+\cO\left(\epsilon^{2}\right),\\
+\cF_{TV}^{\delta}\left(u+\epsilon\widehat{u}\right)-\cF_{TV}^{\delta}\left(u\right) & =\frac{1}{2}\int_{\Omega}\left[\left(u+\epsilon\widehat{u}-d\right)^{2}-\left(u-d\right)^{2}\right]\\
+ & \quad+\alpha\int_{\Omega}\left[\left(\nabla\left(u+\epsilon\widehat{u}\right)\cdot\nabla\left(u+\epsilon\widehat{u}\right)+\delta\right)^{\frac{1}{2}}-\left(\nabla u\cdot\nabla u+\delta\right)^{\frac{1}{2}}\right]\\
+ & =\epsilon\left[\int_{\Omega}\widehat{u}\left(u-d\right)+\alpha\int_{\Omega}\frac{\nabla\widehat{u}\cdot\nabla u}{\left(\nabla u\cdot\nabla u+\delta\right)^{\frac{1}{2}}}\right]+\cO\left(\epsilon^{2}\right),
+\end{align*}
+
+\end_inset
+
+thus the first-order necesary condition in weak form reads
+\begin_inset Formula 
+\begin{align*}
+\text{For TN:} & \ \int_{\Omega}\widehat{u}\left(u-d\right)+\alpha\int_{\Omega}\nabla\widehat{u}\cdot\nabla u=0,\\
+\text{For TV:} & \ \int_{\Omega}\widehat{u}\left(u-d\right)+\alpha\int_{\Omega}\frac{\nabla\widehat{u}\cdot\nabla u}{\left(\nabla u\cdot\nabla u+\delta\right)^{\frac{1}{2}}}=0
+\end{align*}
+
+\end_inset
+
+for any 
+\begin_inset Formula $\nabla\widehat{u}\cdot n=0$
+\end_inset
+
+.
+ The strong form can be derived by using integration by parts:
+\begin_inset Formula 
+\begin{align*}
+\text{For TN:} & \ u-d-\alpha\Delta u=0,\\
+\text{For TV:} & \ u-d-\alpha\nabla\cdot\left[\frac{\nabla u}{\left(\nabla u\cdot\nabla u+\delta\right)^{\frac{1}{2}}}\right]=0.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Show that when 
+\begin_inset Formula $\nabla u$
+\end_inset
+
+ is zero, 
+\begin_inset Formula $\cR_{TV}$
+\end_inset
+
+ is not differentiable, but 
+\begin_inset Formula $\cR_{TV}^{\delta}$
+\end_inset
+
+ is.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Basically, we need to show that 
+\begin_inset Formula $h\left(\boldsymbol{x}\right):=\left(\boldsymbol{x}\cdot\boldsymbol{x}\right)^{\frac{1}{2}}$
+\end_inset
+
+ is not differentiable at 0 but 
+\begin_inset Formula $h^{\delta}\left(\boldsymbol{x}\right):=\left(\boldsymbol{x}\cdot\boldsymbol{x}+\delta\right)^{\frac{1}{2}}$
+\end_inset
+
+ is.
+ In fact, 
+\begin_inset Formula 
+\begin{align*}
+\nabla h\left(\boldsymbol{x}\right) & =\frac{\boldsymbol{x}}{\left(\boldsymbol{x}\cdot\boldsymbol{x}\right)^{\frac{1}{2}}},\\
+\nabla h^{\delta}\left(\boldsymbol{x}\right) & =\frac{\boldsymbol{x}}{\left(\boldsymbol{x}\cdot\boldsymbol{x}+\delta\right)^{\frac{1}{2}}}
+\end{align*}
+
+\end_inset
+
+when 
+\begin_inset Formula $\boldsymbol{x}\neq0$
+\end_inset
+
+, so 
+\begin_inset Formula $\nabla h$
+\end_inset
+
+ can not be extended onto 
+\begin_inset Formula $\boldsymbol{x}=0$
+\end_inset
+
+ continuously but 
+\begin_inset Formula $\nabla h^{\delta}$
+\end_inset
+
+ can.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+For 
+\begin_inset Formula $\cF_{TV}^{\delta}$
+\end_inset
+
+, derive the infinite-dimensional Newton step, in both weak and strong form.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Let 
+\begin_inset Formula $\widetilde{u}$
+\end_inset
+
+ denote the Newton step, then the effect of Hessian applied on 
+\begin_inset Formula $\widetilde{u}$
+\end_inset
+
+ is 
+\begin_inset Formula $\left\langle H\widetilde{u},\widehat{u}\right\rangle =\frac{\partial}{\partial u}\left\langle g,\widehat{u}\right\rangle $
+\end_inset
+
+, i.e.
+\begin_inset Formula 
+\begin{equation}
+\left\langle H\widetilde{u},\widehat{u}\right\rangle =\int_{\Omega}\widehat{u}\widetilde{u}+\alpha\frac{\nabla\widetilde{u}\cdot\nabla\widehat{u}}{\left(\nabla u\cdot\nabla u+\delta\right)^{\frac{1}{2}}}-\alpha\frac{\left(\nabla u\cdot\nabla\widehat{u}\right)\left(\nabla\widetilde{u}\cdot\nabla u\right)}{\left(\nabla u\cdot\nabla u+\delta\right)^{\frac{3}{2}}}\ \text{for any}\ \nabla\widehat{u}\cdot n=0,\label{eq:p1-c-weak form}
+\end{equation}
+
+\end_inset
+
+which yields
+\begin_inset Formula 
+\begin{equation}
+H\widetilde{u}=\widetilde{u}-\alpha\nabla\cdot\frac{\nabla\widetilde{u}}{\left(\nabla u\cdot\nabla u+\delta\right)^{\frac{1}{2}}}+\alpha\nabla\cdot\frac{\nabla u\left(\nabla\widetilde{u}\cdot\nabla u\right)}{\left(\nabla u\cdot\nabla u+\delta\right)^{\frac{3}{2}}}.\label{eq:p1-c-strong form}
+\end{equation}
+
+\end_inset
+
+Using the identity that 
+\begin_inset Formula $\left(a\cdot b\right)c=\left(ca^{T}\right)b$
+\end_inset
+
+, we can exact the anisotropic tensor 
+\begin_inset Formula $A$
+\end_inset
+
+ from Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1-c-strong form"
+
+\end_inset
+
+ as
+\begin_inset Formula 
+\begin{align*}
+A\left(\nabla u\right) & =\frac{\alpha}{\left(\nabla u\cdot\nabla u+\delta\right)^{\frac{1}{2}}}I-\frac{\alpha\nabla u\left(\nabla u\right)^{T}}{\left(\nabla u\cdot\nabla u+\delta\right)^{\frac{3}{2}}}\\
+ & =\alpha\frac{\left(\nabla u\cdot\nabla u+\delta\right)I-\nabla u\left(\nabla u\right)^{T}}{\left(\nabla u\cdot\nabla u+\delta\right)^{\frac{3}{2}}}.
+\end{align*}
+
+\end_inset
+
+Note that 
+\begin_inset Formula $A$
+\end_inset
+
+ is always positive definite due to the fact that for 
+\begin_inset Formula $\xi\neq0$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\left\langle A\xi,\xi\right\rangle =\frac{\alpha\delta}{\left(\nabla u\cdot\nabla u+\delta\right)^{\frac{3}{2}}}\abs{\xi}^{2}+\alpha\frac{\abs{\nabla u}^{2}\abs{\xi}^{2}-\left(\xi^{T}\nabla u\right)^{2}}{\left(\nabla u\cdot\nabla u+\delta\right)^{\frac{3}{2}}}>0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Derive expressions for the two eigenvalues and corresponding eigenvectors
+ of 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ Based on these expressions, give an explanation of why 
+\begin_inset Formula $\cF_{TV}^{\delta}$
+\end_inset
+
+ is effective at preserving sharp edges in the image, while 
+\begin_inset Formula $\cF_{TN}$
+\end_inset
+
+ is not.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+We ignore the scaling 
+\begin_inset Formula $\left(\nabla u\cdot\nabla u+\delta\right)^{\frac{3}{2}}$
+\end_inset
+
+ for one moment since it doesn't affect the eigenvector.
+ Let 
+\begin_inset Formula $\xi$
+\end_inset
+
+ denote the eigenvector associated with 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, i.e.
+\begin_inset Formula 
+\[
+\lambda\xi=\alpha\left[\left(\nabla u\cdot\nabla u+\delta\right)I-\nabla u\left(\nabla u\right)^{T}\right]\xi.
+\]
+
+\end_inset
+
+Since the operator consists of the scalar part 
+\begin_inset Formula $\left(\nabla u\cdot\nabla u+\delta\right)I$
+\end_inset
+
+ and the rank-1 part 
+\begin_inset Formula $\nabla u\left(\nabla u\right)^{T}$
+\end_inset
+
+, 
+\begin_inset Formula $\xi$
+\end_inset
+
+ must be in the same or orthogonal direction with 
+\begin_inset Formula $\nabla u$
+\end_inset
+
+.
+ Combining the condition that 
+\begin_inset Formula $\xi\in\bR^{2}$
+\end_inset
+
+, we have 
+\begin_inset Formula $\xi_{1}=\nabla u$
+\end_inset
+
+ or 
+\begin_inset Formula $\xi_{2}\perp\nabla u$
+\end_inset
+
+, the assocaited eigenvalues are
+\begin_inset Formula 
+\begin{align*}
+\lambda_{1} & =\alpha\left(\nabla u\cdot\nabla u+\delta\right)-\alpha\nabla u\cdot\nabla u=\alpha\delta,\\
+\lambda_{2} & =\alpha\left(\nabla u\cdot\nabla u+\delta\right).
+\end{align*}
+
+\end_inset
+
+This indicates that the eigenvalue in the gradient direction (
+\begin_inset Formula $\alpha\delta$
+\end_inset
+
+) is small compared to that the normal direction.
+ In some sense, it means that the diffusion effect is weak across the boundaries
+ (i.e.
+ the gradient direction) and strong along the boundaries (i.e.
+ the normal direction), which implies that this anisotropic diffusion averages
+ out the noises while keeping the boundaries.
+ The isotropic diffusion does not distinguish these directions so it smooth
+ out the differences evenly.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Show that for large enough 
+\begin_inset Formula $\delta$
+\end_inset
+
+, 
+\begin_inset Formula $\cR_{TV}^{\delta}$
+\end_inset
+
+ behaves like 
+\begin_inset Formula $\cR_{TN}$
+\end_inset
+
+ , and for 
+\begin_inset Formula $\delta=0$
+\end_inset
+
+, the Hessian of 
+\begin_inset Formula $\cR_{TV}^{\delta}$
+\end_inset
+
+ is singular.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The strong form for the Newton step in Tikhonov regularization reads
+\begin_inset Formula 
+\begin{equation}
+\widetilde{u}-\left(u-d\right)-\alpha\nabla\cdot\left(\nabla\widetilde{u}-\nabla u\right)=0.\label{eq:p1-e-strong form}
+\end{equation}
+
+\end_inset
+
+The connection between Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1-c-strong form"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1-e-strong form"
+
+\end_inset
+
+ is that when 
+\begin_inset Formula $\delta\gg1$
+\end_inset
+
+, the fourth term in Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1-c-strong form"
+
+\end_inset
+
+ is dominated by the third term
+\begin_inset Formula 
+\[
+\alpha\nabla\cdot\frac{\left(\nabla\widetilde{u}-\nabla u\right)}{\left(\nabla u\cdot\nabla u+\delta\right)^{\frac{1}{2}}}\sim\frac{\alpha}{\sqrt{\delta}}\nabla\cdot\left(\nabla\widetilde{u}-\nabla u\right),
+\]
+
+\end_inset
+
+so as 
+\begin_inset Formula $\delta\gg1$
+\end_inset
+
+, the TV regularization falls back to TN where the 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ parameter scales down by 
+\begin_inset Formula $\sqrt{\delta}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+When 
+\begin_inset Formula $\delta=0$
+\end_inset
+
+, the singularity of the Hessian of 
+\begin_inset Formula $\cR_{TV}^{\delta}$
+\end_inset
+
+ arises from the singularity of 
+\begin_inset Formula $\nabla^{2}\sqrt{\boldsymbol{x}\cdot\boldsymbol{x}}.$
+\end_inset
+
+ In fact, 
+\begin_inset Formula 
+\begin{align*}
+\nabla^{2}\sqrt{\boldsymbol{x}\cdot\boldsymbol{x}} & =\nabla\left(\frac{\boldsymbol{x}}{\abs{\boldsymbol{x}}}\right)\\
+ & =\frac{1}{\abs{\boldsymbol{x}}}I-\frac{\boldsymbol{x}\boldsymbol{x}^{T}}{\abs{\boldsymbol{x}}^{3}}
+\end{align*}
+
+\end_inset
+
+is singular at 
+\begin_inset Formula $x=0$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\ $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Solving the Poisson equation by FEniCS
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+We pick test functions 
+\begin_inset Formula $v\in H_{0}^{1}\left(\Omega\right)$
+\end_inset
+
+ and integrate it against the strong form
+\begin_inset Formula 
+\[
+\int_{\Omega}fv=-\int_{\Omega}\left[\nabla\cdot\left(A\nabla u\right)\right]v=-\int_{\partial\Omega}v\frac{\partial}{\partial n}\cdot\left(A\nabla u\right)+\int_{\Omega}\left(A\nabla u\right)\cdot\nabla v,
+\]
+
+\end_inset
+
+thus the weak form reads
+\begin_inset Formula 
+\begin{equation}
+\int_{\Omega}\left(A\nabla u\right)\cdot\nabla v=\int_{\Omega}fv,\forall v\in H_{0}^{1}\left(\Omega\right).\label{eq:p3-a-weak}
+\end{equation}
+
+\end_inset
+
+To transform Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p3-a-weak"
+
+\end_inset
+
+ into a minimization problem, we view the two sides as infinitesimal perturbatio
+n of 
+\begin_inset Formula $\frac{1}{2}\int_{\Omega}\left(A\nabla u\right)\cdot\nabla u$
+\end_inset
+
+ and 
+\begin_inset Formula $\int_{\Omega}fu$
+\end_inset
+
+ respectively, thus the energy functional is given by
+\begin_inset Formula 
+\[
+J\left(u\right):=\frac{1}{2}\int_{\Omega}\left(A\nabla u\right)\cdot\nabla u-\int_{\Omega}fu\ \text{over}\ u|_{\partial\Omega}=u_{0}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+We plot out the solutions in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p3"
+
+\end_inset
+
+.
+ For the isotropic diffusion, the contour of the solution is a circle, while
+ the contour for anisotropic diffusion is a long and thin ellipse, corresponding
+ to the gap in eigenvalues and different eigen directions.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plot/p3-A1.png
+	width 50line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename plot/p3-A2.png
+	width 50line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Isotropic (left) and anisotropic (right) diffusion.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p3"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\ $
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+We first implement the Tikhonov regularization.
+ Since the first order condition is a linear equation, we can just call
+ the linear solver.
+ We tried different choices of 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and show the results in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p4a"
+
+\end_inset
+
+.
+ It's clear that large 
+\begin_inset Formula $\alpha$
+\end_inset
+
+-s will overblur the image while small 
+\begin_inset Formula $\alpha$
+\end_inset
+
+-s are probably not sufficient to remove the noises.
+ In general, we believe that 
+\begin_inset Formula $\alpha\approx3e-4$
+\end_inset
+
+ is a decent choice, which also agrees with the turning point in the L-shape
+ curve.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plot/p4-tikhonov-comparison.png
+	width 50line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename plot/p4-tikhonov-L-curve.eps
+	width 50line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparison of recovery results (left) and L-curve (right).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p4a"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+We start by randomly picking some 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ values, shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p4b-trials"
+
+\end_inset
+
+.
+ It seems that large 
+\begin_inset Formula $\alpha$
+\end_inset
+
+-s will also over blur the images, but 
+\begin_inset Formula $\alpha=1e-2$
+\end_inset
+
+ seems to do a decent job.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plot/alpha=1.0e+00-delta=1.0e-01.png
+	width 50line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename plot/alpha=1.0e-01-delta=1.0e-01.png
+	width 50line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plot/alpha=1.0e-02-delta=1.0e-01.png
+	width 50line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename plot/alpha=1.0e-03-delta=1.0e-01.png
+	width 50line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p4b-trials"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+We then make 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ a little bigger (just to make the problem less stiff) and try out different
+ 
+\begin_inset Formula $\delta$
+\end_inset
+
+-s (laid out in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p4b-trials-1"
+
+\end_inset
+
+).
+ The differences are probably very subtle.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plot/alpha=3.0e-02-delta=1.0e-01.png
+	width 33line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename plot/alpha=3.0e-02-delta=3.0e-01.png
+	width 33line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename plot/alpha=3.0e-02-delta=1.0e+00.png
+	width 33line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p4b-trials-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Next, we test how many iterations are required for different choices of
+ 
+\begin_inset Formula $\delta$
+\end_inset
+
+ and the quality of the recovered image.
+ Shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p4-tv"
+
+\end_inset
+
+, 
+\begin_inset Formula $\delta$
+\end_inset
+
+ does not hugely impact the quality of the recovered image, but we do observe
+ that 
+\begin_inset Formula $\delta=10$
+\end_inset
+
+ will produce a slightly blurred image.
+ However, the effect on the iterations needed primarily depends on the scale
+ of 
+\begin_inset Formula $\delta$
+\end_inset
+
+.
+ For smaller 
+\begin_inset Formula $\delta$
+\end_inset
+
+, it is significantly harder to get to the minimum, possibly due to the
+ fact that the Hessian is getting much more singular.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename plot/p4-tv-comparison.png
+	width 50line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename plot/p4-tv-iterations.png
+	width 50line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p4-tv"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Comparing the recovered image by the TN and TV regularization, the TV image
+ has much clearer boundaries then the TN ones.
+ However, it is also much harder to solve a TV regularization problem.
+ The possible underlying reason is that the TV regularization induces an
+ anisotropic diffusion which is less effective across the boundaries while
+ TN induced diffusion does not distinguish the directions.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document
