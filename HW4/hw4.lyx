@@ -1,0 +1,1702 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{matlab-prettifier}
+\usepackage{lstautogobble}  % Fix relative indenting
+\usepackage{color}          % Code coloring
+% \usepackage{zi4}            % Nice font
+
+\definecolor{bluekeywords}{rgb}{0.13, 0.13, 1}
+\definecolor{greencomments}{rgb}{0, 0.5, 0}
+\definecolor{redstrings}{rgb}{0.9, 0, 0}
+\definecolor{graynumbers}{rgb}{0.5, 0.5, 0.5}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing onehalf
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3.5cm
+\topmargin 4cm
+\rightmargin 3.5cm
+\bottommargin 4cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "/home/xdroid/.lyx/templates/math_shorthand.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Homework 4
+\end_layout
+
+\begin_layout Author
+Ziheng Chen zc5282
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Frequency-domain inverse wave propagation problem: we seek to find the minimizer
+ of 
+\begin_inset Formula 
+\[
+\min_{m}\cJ\left(m\right):=\frac{1}{2}\sum_{i}^{N_{f}}\sum_{j}^{N_{s}}\sum_{k}^{N_{d}}\int_{\Omega}\left(u_{ij}\left(m\right)-u_{ij}^{\text{obs}}\right)^{2}\delta\left(x-x_{k}\right)\d x+\frac{\beta}{2}\int_{\Omega}\nabla m\cdot\nabla m\d x
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $u_{ij}\left(m\right)$
+\end_inset
+
+ depends on the medium parameter field 
+\begin_inset Formula $m\left(x\right)$
+\end_inset
+
+ through
+\begin_inset Formula 
+\begin{align*}
+-\Delta u_{ij}-\omega_{i}^{2}mu_{ij} & =f_{j} & \text{in}\ \Omega, & 1\le i\le N_{f},1\le j\le N_{s},\\
+u_{ij} & =0 & \text{on}\ \partial\Omega.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Derive an expression for the (infinite dimensional) gradient of 
+\begin_inset Formula $\cJ$
+\end_inset
+
+ with respect to the medium 
+\begin_inset Formula $m$
+\end_inset
+
+ using the Lagrangian method for a single source and frequency, i.e., for
+ 
+\begin_inset Formula $N_{f}=N_{s}=1$
+\end_inset
+
+.
+ Give both weak and strong forms of the gradient.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+First, we begin with the Lagrangian associated with the gradient
+\begin_inset Formula 
+\begin{multline}
+\cL^{G}\left(u,m,p\right)=\frac{1}{2}\sum_{k}^{N_{d}}\int_{\Omega}\left(u-u^{\text{obs}}\right)^{2}\delta\left(x-x_{k}\right)\d x+\frac{\beta}{2}\int_{\Omega}\nabla m\cdot\nabla m\d x\\
++\int_{\Omega}\nabla u\cdot\nabla p\d x-\int_{\Omega}\omega^{2}mup\d x-\int_{\Omega}fp\d x.\label{eq:p1-a-lg}
+\end{multline}
+
+\end_inset
+
+The state equation is obtained from 
+\begin_inset Formula $\delta_{p}\cL^{G}=0$
+\end_inset
+
+: the weak form reads
+\begin_inset Formula 
+\begin{equation}
+\int_{\Omega}\nabla u\cdot\nabla\widehat{p}\d x-\int_{\Omega}\omega^{2}mu\widehat{p}\d x-\int_{\Omega}f\widehat{p}\d x=0\quad\forall\widehat{p}\in H_{0}^{1}\label{eq:p1-a-state}
+\end{equation}
+
+\end_inset
+
+while the strong form reduces to
+\begin_inset Formula 
+\begin{align*}
+-\Delta u-\omega^{2}mu & =f & \text{in}\ \Omega,\\
+u & =0 & \text{on}\ \partial\Omega.
+\end{align*}
+
+\end_inset
+
+The adjoint equation is obtained from 
+\begin_inset Formula $\delta_{u}\cL^{G}=0$
+\end_inset
+
+: the weak form reads
+\begin_inset Formula 
+\begin{equation}
+\sum_{k}^{N_{d}}\int_{\Omega}\widehat{u}\left(u-u^{\text{obs}}\right)\delta\left(x-x_{k}\right)\d x+\int_{\Omega}\nabla\widehat{u}\cdot\nabla p\d x-\int_{\Omega}\omega^{2}m\widehat{u}p\d x=0\quad\forall\widehat{u}\in H_{0}^{1}\label{eq:p1-a-adjoint}
+\end{equation}
+
+\end_inset
+
+while the strong form reduces to
+\begin_inset Formula 
+\begin{align*}
+-\Delta p-\omega^{2}mp & =-\sum_{k}^{N_{d}}\left(u-u^{\text{obs}}\right)\delta\left(x-x_{k}\right) & \text{in}\ \Omega,\\
+p & =0 & \text{on}\ \partial\Omega.
+\end{align*}
+
+\end_inset
+
+Lastly, the gradient expression can be obtained from 
+\begin_inset Formula $\delta_{m}\cL^{G}$
+\end_inset
+
+ in the direction of 
+\begin_inset Formula $\widehat{m}$
+\end_inset
+
+, i.e.
+\begin_inset Formula 
+\[
+\left\langle \cG\left(m\right),\widehat{m}\right\rangle =\beta\int_{\Omega}\nabla m\cdot\nabla\widehat{m}\d x-\int_{\Omega}\omega^{2}\widehat{m}up\d x
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $p$
+\end_inset
+
+ are solutions to Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1-a-state"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1-a-adjoint"
+
+\end_inset
+
+ correspondingly.
+ The strong form reads
+\begin_inset Formula 
+\[
+\cG\left(m\right)=-\beta\Delta m-\omega^{2}up.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Derive an expression for the (infinite dimensional) action of the Hessian
+ in a direction 
+\begin_inset Formula $\widetilde{m}$
+\end_inset
+
+ in the single source and frequency case.
+ Give both weak and strong forms of the Hessian action.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Similarly, we begin with the Lagrangian
+\begin_inset Formula 
+\begin{align*}
+\cL^{H}\left(u,m,p;\widetilde{u},\widetilde{m},\widetilde{p}\right) & =\beta\int_{\Omega}\nabla m\cdot\nabla\widetilde{m}\d x-\int_{\Omega}\omega^{2}\widetilde{m}up\d x\\
+ & \quad+\int_{\Omega}\nabla u\cdot\nabla\widetilde{p}\d x-\int_{\Omega}\omega^{2}mu\widetilde{p}\d x-\int_{\Omega}f\widetilde{p}\d x\\
+ & \quad+\int_{\Omega}\widetilde{u}\left(u-u^{\text{obs}}\right)\delta\left(x-x_{k}\right)\d x+\int_{\Omega}\nabla\widetilde{u}\cdot\nabla p\d x-\int_{\Omega}\omega^{2}m\widetilde{u}p\d x.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The incremental state equation: weak form 
+\begin_inset Formula $\delta_{p}\cL^{H}=0$
+\end_inset
+
+, i.e.
+ solve 
+\begin_inset Formula $\widetilde{u}\in H_{0}^{1}$
+\end_inset
+
+ from 
+\begin_inset Formula 
+\[
+-\int_{\Omega}\omega^{2}\widetilde{m}u\widehat{p}\d x+\int_{\Omega}\nabla\widetilde{u}\cdot\nabla\widehat{p}\d x-\int_{\Omega}\omega^{2}m\widetilde{u}\widehat{p}\d x=0\quad\forall\widehat{p}\in H_{0}^{1}.
+\]
+
+\end_inset
+
+The strong form reads
+\begin_inset Formula 
+\begin{align*}
+-\Delta\widetilde{u}-\omega^{2}m\widetilde{u} & =\omega^{2}\widetilde{m}u & \text{in}\ \Omega,\\
+\widetilde{u} & =0 & \text{on}\ \partial\Omega.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The incremental adjoint equation: weak form 
+\begin_inset Formula $\delta_{u}\cL^{H}=0$
+\end_inset
+
+, i.e.
+ solve 
+\begin_inset Formula $\widetilde{p}\in H_{0}^{1}$
+\end_inset
+
+ from 
+\begin_inset Formula 
+\[
+-\int_{\Omega}\omega^{2}\widetilde{m}\widehat{u}p\d x+\int_{\Omega}\nabla\widehat{u}\cdot\nabla\widetilde{p}\d x-\int_{\Omega}\omega^{2}m\widehat{u}\widetilde{p}\d x+\int_{\Omega}\widetilde{u}\widehat{u}\delta\left(x-x_{k}\right)\d x=0\quad\forall\widehat{u}\in H_{0}^{1}.
+\]
+
+\end_inset
+
+The strong form reads
+\begin_inset Formula 
+\begin{align*}
+-\Delta\widetilde{p}-\omega^{2}m\widetilde{p} & =\omega^{2}\widetilde{m}p-\widetilde{u}\delta\left(x-x_{k}\right) & \text{in}\ \Omega,\\
+\widetilde{p} & =0 & \text{on}\ \partial\Omega.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The Hessian action: weak form 
+\begin_inset Formula 
+\[
+\left\langle H\left(m\right)\widetilde{m},\widehat{m}\right\rangle =\delta_{m}\cL^{H}=\beta\int_{\Omega}\nabla\widehat{m}\cdot\nabla\widetilde{m}\d x-\int_{\Omega}\omega^{2}\widehat{m}u\widetilde{p}\d x-\int_{\Omega}\omega^{2}\widehat{m}\widetilde{u}p\d x
+\]
+
+\end_inset
+
+The strong form reads
+\begin_inset Formula 
+\[
+H\left(m\right)\widetilde{m}=-\beta\Delta\widetilde{m}-\omega^{2}u\widetilde{p}-\omega^{2}\widetilde{u}p.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Derive an expression for the (infinite dimensional) gradient for an arbitrary
+ number of sources and frequencies.
+ How many state and adjoint equations have to be solved for a single gradient
+ computation?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+In general, the Lagrangian associated with the gradient reads
+\begin_inset Formula 
+\begin{multline}
+\cL^{G}\left(u,m,p\right)=\frac{1}{2}\sum_{i}^{N_{f}}\sum_{j}^{N_{s}}\sum_{k}^{N_{d}}\int_{\Omega}\left(u_{ij}-u_{ij}^{\text{obs}}\right)^{2}\delta\left(x-x_{k}\right)\d x+\frac{\beta}{2}\int_{\Omega}\nabla m\cdot\nabla m\d x\\
++\sum_{i}^{N_{f}}\sum_{j}^{N_{s}}\left[\int_{\Omega}\nabla u_{ij}\cdot\nabla p_{ij}\d x-\int_{\Omega}\omega_{i}^{2}mu_{ij}p_{ij}\d x-\int_{\Omega}f_{j}p_{ij}\d x\right]\label{eq:p1-c-lg}
+\end{multline}
+
+\end_inset
+
+where 
+\begin_inset Formula $u_{ij}$
+\end_inset
+
+ solves
+\begin_inset Formula 
+\[
+-\Delta u_{ij}-\omega_{i}^{2}mu_{ij}=f_{j}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula $p_{ij}$
+\end_inset
+
+ solves 
+\begin_inset Formula 
+\[
+-\Delta p_{ij}-\omega_{i}^{2}mp_{ij}=-\sum_{k}^{N_{d}}\left(u_{ij}-u^{\text{obs}}\right)\delta\left(x-x_{k}\right)
+\]
+
+\end_inset
+
+with Dirichlet boundary conditions.
+ Then, after solving these 
+\begin_inset Formula $N_{f}N_{s}$
+\end_inset
+
+ state and adjoint equations, the gradient can be assembled by
+\begin_inset Formula 
+\[
+\left\langle \cG\left(m\right),\widehat{m}\right\rangle =\delta_{m}\cL^{G}=\beta\int_{\Omega}\nabla\widehat{m}\cdot\nabla m\d x-\sum_{i}^{N_{f}}\sum_{j}^{N_{s}}\int_{\Omega}\omega_{i}^{2}\widehat{m}u_{ij}p_{ij}\d x.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+We would like to solve the inverse problem for the advection-diffusion-reaction
+ equation we discussed in class, on the domain 
+\begin_inset Formula $\Omega=\left[0,1\right]\times\left[0,1\right]$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\min_{m}\cJ\left(m\right):=\frac{1}{2}\int_{\Omega}\left(u\left(m\right)-u^{\text{obs}}\right)^{2}\d x+\frac{\beta}{2}\int_{\Omega}\nabla m\cdot\nabla m\d x,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $u\left(x\right)$
+\end_inset
+
+ depends on 
+\begin_inset Formula $m\left(x\right)$
+\end_inset
+
+ via
+\begin_inset Formula 
+\begin{align*}
+-\nabla\cdot\left(k\nabla u\right)+v\cdot\nabla u+100\exp\left(m\right)u^{3} & =f & \text{in}\ \Omega,\\
+u & =0 & \text{on}\ \partial\Omega.
+\end{align*}
+
+\end_inset
+
+We synthesize the measurement data 
+\begin_inset Formula $u^{\text{obs}}\left(x\right)$
+\end_inset
+
+ by solving the forward advection-diffusion-reaction equation with the “true”
+ reaction coefficient field
+\begin_inset Formula 
+\[
+m\left(x,y\right)=\begin{cases}
+\log4 & \text{if}\ \left(x-0.5\right)^{2}+\left(y-0.5\right)^{2}\le0.2^{2}\\
+\log8 & \text{otherwise}
+\end{cases}
+\]
+
+\end_inset
+
+for 
+\begin_inset Formula $f\left(x,y\right)=\max\left\{ 0.5,\exp\left(-25\left(x-0.7\right)^{2}-25\left(y-0.7\right)^{2}\right)\right\} ,k=1$
+\end_inset
+
+ and 
+\begin_inset Formula $v=\left(1,0\right)^{T}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+First, we derive the adjoint equation and the gradient expression.
+ In fact, the Larangian associated with the gradient reads 
+\begin_inset Formula 
+\[
+\cL^{G}\left(u,m,p\right)=\cJ\left(m\right)+\int_{\Omega}\left(k\nabla u\right)\cdot\nabla p\d x+\int_{\Omega}\left(v\cdot\nabla u\right)p\d x+\int_{\Omega}100\exp\left(m\right)u^{3}p\d x-\int_{\Omega}fp\d x,
+\]
+
+\end_inset
+
+so the adjoint reads
+\begin_inset Formula 
+\[
+-k\Delta p-\nabla\cdot\left(vp\right)+300\exp\left(m\right)u^{2}p=-\left(u-u^{\text{obs}}\right),p\in H_{0}^{1}
+\]
+
+\end_inset
+
+and the assembled gradient is
+\begin_inset Formula 
+\[
+\left\langle \cG\left(m\right),\widehat{m}\right\rangle =\delta_{m}\cL^{G}=\beta\int_{\Omega}\nabla\widehat{m}\cdot\nabla m\d x+\int_{\Omega}100\exp\left(m\right)\widehat{m}u^{3}p\d x.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Report the solution of the inverse problem and the number of required iterations
+ (for a 
+\begin_inset Formula $10^{6}$
+\end_inset
+
+ relative reduction in the norm of the gradient) for the following cases:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status collapsed
+
+\begin_layout Plain Layout
+Noise level of 0.01 (roughly 1% noise), regularization 
+\begin_inset Formula $\beta=10^{-8}$
+\end_inset
+
+, and initial guess of 
+\begin_inset Formula $m\left(x\right)=8$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The recovered solution is shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2-1-a"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Same as i., but with 
+\begin_inset Formula $\beta=0$
+\end_inset
+
+, i.e., no regularization.
+ You will have to decide when to terminate the iterations to produce a good
+ inverse solution.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The solution to the problem without regularization is shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2-1-b"
+
+\end_inset
+
+.
+ The decay of the gradient norm is much slower (of order 
+\begin_inset Formula $\frac{1}{n}$
+\end_inset
+
+) compared to the case with regularization (of order 
+\begin_inset Formula $q^{n}$
+\end_inset
+
+).
+ Thus, we select five stages at iteration 1, 10, 100, 1000, and 10000 and
+ compare the recovered results.
+ It seems that stopping at 100 is the best choice since it captures most
+ of the variations without introducing too many artificial patterns.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status collapsed
+
+\begin_layout Plain Layout
+Same as i., but with an initial guess of 
+\begin_inset Formula $m\left(x\right)=4$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The recovered solution is shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2-1-c"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and the convergence is a bit slower than starting with 
+\begin_inset Formula $m_{0}=8$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "50col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/xdroid/Documents/archived/2021-1 (2021 Fall)/CSE397/fenics/plot/p2-1-a-sol-m.jpg
+	width 100line%
+
+\end_inset
+
+
+\begin_inset VSpace 0bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/xdroid/Documents/archived/2021-1 (2021 Fall)/CSE397/fenics/plot/p2-1-a-sol.jpg
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The gradient descent method converges in 672 steps.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/xdroid/Documents/archived/2021-1 (2021 Fall)/CSE397/fenics/plot/p2-1-a-gradnorm.jpg
+	width 49line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relative gradient norm decaying during iterations.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Recovered solution using Tikhonov regularization with 
+\begin_inset Formula $\beta=1e-8$
+\end_inset
+
+, starting at 
+\begin_inset Formula $m_{0}=8$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p2-1-a"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "50col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/xdroid/Documents/archived/2021-1 (2021 Fall)/CSE397/fenics/plot/p2-1-c-sol-m.jpg
+	width 100line%
+
+\end_inset
+
+
+\begin_inset VSpace 0bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/xdroid/Documents/archived/2021-1 (2021 Fall)/CSE397/fenics/plot/p2-1-c-sol.jpg
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The gradient descent method converges in 922 steps.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/xdroid/Documents/archived/2021-1 (2021 Fall)/CSE397/fenics/plot/p2-1-c-gradnorm.jpg
+	width 49line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relative gradient norm decaying during iterations.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Recovered solution using Tikhonov regularization with 
+\begin_inset Formula $\beta=1e-8$
+\end_inset
+
+, starting at 
+\begin_inset Formula $m_{0}=4$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p2-1-c"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "50col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/xdroid/Documents/archived/2021-1 (2021 Fall)/CSE397/fenics/plot/p2-1-b-sol-m.jpg
+	width 100line%
+
+\end_inset
+
+
+\begin_inset VSpace 0bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/xdroid/Documents/archived/2021-1 (2021 Fall)/CSE397/fenics/plot/p2-1-b-sol.jpg
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The gradient descent method fails to converge after 10000 steps.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/xdroid/Documents/archived/2021-1 (2021 Fall)/CSE397/fenics/plot/p2-1-b-gradnorm.jpg
+	width 49line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relative gradient norm decaying during iterations.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Recovered solution without Tikhonov regularization, starting at 
+\begin_inset Formula $m_{0}=8$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p2-1-b"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+We can also use TV regularization to obtain a more sharp recovery of 
+\begin_inset Formula $m\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status collapsed
+
+\begin_layout Plain Layout
+Noise level of 0.01 (roughly 1% noise), regularization 
+\begin_inset Formula $\beta=10^{-8}$
+\end_inset
+
+, and initial guess of 
+\begin_inset Formula $m\left(x\right)=8$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+The recovered result is shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2-2-a"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ The optimization takes much more steps compared to the case using Tikhonov
+ regularization, potentially due to the fact that TV is more non-linear
+ than quadratic functions.
+ The recovered solution looks much sharper.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status collapsed
+
+\begin_layout Plain Layout
+Same as i., but with an initial guess of 
+\begin_inset Formula $m\left(x\right)=4$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The recovered result is shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2-2-c"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and it takes slightly more steps than using a different initial value.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "50col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/xdroid/Documents/archived/2021-1 (2021 Fall)/CSE397/fenics/plot/p2-2-a-sol-m.jpg
+	width 100line%
+
+\end_inset
+
+
+\begin_inset VSpace 0bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/xdroid/Documents/archived/2021-1 (2021 Fall)/CSE397/fenics/plot/p2-2-a-sol.jpg
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The gradient descent method converges in 4462 steps.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/xdroid/Documents/archived/2021-1 (2021 Fall)/CSE397/fenics/plot/p2-2-a-gradnorm.jpg
+	width 49line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relative gradient norm decaying during iterations.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Recovered solution using TV regularization with 
+\begin_inset Formula $\beta=1e-8$
+\end_inset
+
+, starting at 
+\begin_inset Formula $m_{0}=8$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p2-2-a"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "50col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/xdroid/Documents/archived/2021-1 (2021 Fall)/CSE397/fenics/plot/p2-2-c-sol-m.jpg
+	width 100line%
+
+\end_inset
+
+
+\begin_inset VSpace 0bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/xdroid/Documents/archived/2021-1 (2021 Fall)/CSE397/fenics/plot/p2-2-c-sol.jpg
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The gradient descent method converges in 4609 steps.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/xdroid/Documents/archived/2021-1 (2021 Fall)/CSE397/fenics/plot/p2-2-c-gradnorm.jpg
+	width 49line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relative gradient norm decaying during iterations.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Recovered solution using TV regularization with 
+\begin_inset Formula $\beta=1e-8$
+\end_inset
+
+, starting at 
+\begin_inset Formula $m_{0}=4$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p2-2-c"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsection*
+Appendix
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+I convert the jupyter notebook into pdf files and attach them below.
+ It might look lengthy, but the essential plots are the same as appeared
+ in the previous paragraphs.
+\end_layout
+
+\begin_layout Standard
+\begin_inset External
+	template PDFPages
+	filename hw4-nb.pdf
+	extra LaTeX "pages=-"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
