@@ -1,0 +1,1908 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{matlab-prettifier}
+\usepackage{lstautogobble}  % Fix relative indenting
+\usepackage{color}          % Code coloring
+% \usepackage{zi4}            % Nice font
+
+\definecolor{bluekeywords}{rgb}{0.13, 0.13, 1}
+\definecolor{greencomments}{rgb}{0, 0.5, 0}
+\definecolor{redstrings}{rgb}{0.9, 0, 0}
+\definecolor{graynumbers}{rgb}{0.5, 0.5, 0.5}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing onehalf
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3.5cm
+\topmargin 4cm
+\rightmargin 3.5cm
+\bottommargin 4cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "/home/xdroid/.lyx/templates/math_shorthand.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Homework 5
+\end_layout
+
+\begin_layout Author
+Ziheng Chen zc5282
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+An inverse problem for Burger's equation
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Consider the inverse problem for the viscosity field 
+\begin_inset Formula $m$
+\end_inset
+
+ in the one-dimensional Burger's equation (this equation is often taken
+ as a one-dimensional surrogate for the Navier-Stokes equations).
+ Taking 
+\begin_inset Formula $\left[0,L\right]$
+\end_inset
+
+ as the spatial domain and 
+\begin_inset Formula $\left[0,T\right]$
+\end_inset
+
+ as the temporal interval, the solution 
+\begin_inset Formula $u=u\left(x,t\right):\left[0,L\right]\times\left[0,T\right]$
+\end_inset
+
+ satisfies
+\begin_inset Formula 
+\begin{align}
+u_{t}+uu_{x}-\left(mu_{x}\right)_{x} & =f & \text{in}\ \left(0,L\right)\times\left(0,T\right),\label{eq:p1-diffu}\\
+u\left(0,t\right)=u\left(L,t\right) & =0 & \text{for all}\ t\in\left[0,T\right],\label{eq:p1-BC}\\
+u\left(x,0\right) & =0 & \text{for all}\ x\in\left[0,L\right].\label{eq:p1-IC}
+\end{align}
+
+\end_inset
+
+Here, 
+\begin_inset Formula $m=m\left(x\right):\left[0,L\right]\to\bR$
+\end_inset
+
+ is the spatially-dependent viscosity field we wish to invert for, 
+\begin_inset Formula $f=f\left(x,t\right)$
+\end_inset
+
+ is a given source term, and subscripts 
+\begin_inset Formula $t$
+\end_inset
+
+ and 
+\begin_inset Formula $x$
+\end_inset
+
+ indicate partial derivatives with respect to time and space coordinates.
+ The conditions Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1-BC"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1-IC"
+
+\end_inset
+
+ are the boundary and initial conditions, respectively.
+ We are given observations 
+\begin_inset Formula $d=d\left(x,t\right)$
+\end_inset
+
+ for a portion of the time interval, i.e., for 
+\begin_inset Formula $t\in\left[T_{1},T\right]$
+\end_inset
+
+, where 
+\begin_inset Formula $T_{1}>0$
+\end_inset
+
+.
+ To invert for the viscosity field 
+\begin_inset Formula $m$
+\end_inset
+
+, we thus minimize the functional
+\begin_inset Formula 
+\begin{equation}
+\cF\left(m\right):=\frac{1}{2}\int_{T_{1}}^{T}\int_{0}^{L}\left(u-d\right)^{2}\d x\d t+\frac{\beta}{2}\int_{0}^{L}\left(m_{x}\right)^{2}\d x\label{eq:p1-F}
+\end{equation}
+
+\end_inset
+
+with regularization parameter 
+\begin_inset Formula $\beta>0$
+\end_inset
+
+.
+ An efficient optimization method for Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1-F"
+
+\end_inset
+
+ requires the gradient of 
+\begin_inset Formula $\cF$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $m$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Derive a weak form of Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1-diffu"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1-BC"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1-IC"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+First, we start by multiplying Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1-diffu"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ with a test function 
+\begin_inset Formula $p\left(x,t\right)$
+\end_inset
+
+ (we don't assume BC for 
+\begin_inset Formula $p$
+\end_inset
+
+ at the moment as we wish to derive it from the Lagrangian), we have
+\begin_inset Formula 
+\[
+\int_{0}^{T}\int_{0}^{L}\left[u_{t}p+uu_{x}p-\left(mu_{x}\right)_{x}p-fp\right]\d x\d t=0.
+\]
+
+\end_inset
+
+We apply integration by parts on the viscosity term
+\begin_inset Formula 
+\[
+\int_{0}^{T}\int_{0}^{L}-\left(mu_{x}\right)_{x}p\d x\d t=-\int_{0}^{T}\left[n\cdot\left(mu_{x}\right)\right]_{0}^{L}p\d t+\int_{0}^{T}\int_{0}^{L}mu_{x}p_{x}\d x\d t.
+\]
+
+\end_inset
+
+Thus the weak form reads finding 
+\begin_inset Formula $u\in H^{1}\left(\left[0,L\right]\times\left[0,T\right]\right)$
+\end_inset
+
+, 
+\begin_inset Formula $u\left(0,\cdot\right)=u\left(L,\cdot\right)=0$
+\end_inset
+
+, 
+\begin_inset Formula $u\left(\cdot,0\right)=0$
+\end_inset
+
+, s.t.
+\begin_inset Formula 
+\begin{equation}
+\int_{0}^{T}\int_{0}^{L}\left[u_{t}p+uu_{x}p+mu_{x}p_{x}-fp\right]\d x\d t-\int_{0}^{T}\left[n\cdot\left(mu_{x}\right)\right]_{0}^{L}p\d t=0,\forall p\in H^{1}\left(\left[0,L\right]\times\left[0,T\right]\right).\label{eq:p1-weak form}
+\end{equation}
+
+\end_inset
+
+If we assume 
+\begin_inset Formula $p$
+\end_inset
+
+ shares the Dirichlet BC (which will be justified later), Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1-weak form"
+
+\end_inset
+
+ reduces to
+\begin_inset Formula 
+\[
+\int_{0}^{T}\int_{0}^{L}\left[u_{t}p+uu_{x}p+mu_{x}p_{x}-fp\right]\d x\d t=0,\forall p\in H^{1}\left(\left[0,L\right]\times\left[0,T\right]\right),p\left(0,\cdot\right)=p\left(L,\cdot\right)=0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Using the Lagrangian approach, derive expressions for the adjoint equation
+ and for the gradient of 
+\begin_inset Formula $\cF$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $m$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+We write down the Lagrangian
+\begin_inset Formula 
+\begin{multline}
+\cL\left(u,m,p\right)=\int_{0}^{T}\int_{0}^{L}\left[u_{t}p+uu_{x}p+mu_{x}p_{x}-fp\right]\d x\d t-\int_{0}^{T}\left[n\cdot\left(mu_{x}\right)\right]_{0}^{L}p\d t\\
++\frac{1}{2}\int_{T_{1}}^{T}\int_{0}^{L}\left(u-d\right)^{2}\d x\d t+\frac{\beta}{2}\int_{0}^{L}\left(m_{x}\right)^{2}\d x.\label{eq:p1-lagrangian}
+\end{multline}
+
+\end_inset
+
+As usual, 
+\begin_inset Formula $\delta_{p}\cL=0$
+\end_inset
+
+ yields the forward problem.
+ The adjoint problem is obtained from 
+\begin_inset Formula $\delta_{u}\cL=0$
+\end_inset
+
+.
+ Notice the following equations:
+\begin_inset Formula 
+\begin{align}
+\int_{0}^{T}\int_{0}^{L}\widehat{u}_{t}p\d x\d t & =\int_{0}^{L}\left[\widehat{u}p\right]_{0}^{T}\d x-\int_{0}^{T}\int_{0}^{L}\widehat{u}p_{t}\d x\d t\nonumber \\
+ & =\int_{0}^{L}\left[\widehat{u}p\right]^{T}\d x-\int_{0}^{T}\int_{0}^{L}\widehat{u}p_{t}\d x\d t,\label{eq:p1-ibp-time}
+\end{align}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align}
+\int_{0}^{T}\int_{0}^{L}u\widehat{u}_{x}p\d x\d t & =\int_{0}^{T}\left[up\left(n\cdot\widehat{u}\right)\right]_{0}^{L}\d t-\int_{0}^{T}\int_{0}^{L}\left(up\right)_{x}\widehat{u}\d x\d t\nonumber \\
+ & =-\int_{0}^{T}\int_{0}^{L}\left(up\right)_{x}\widehat{u}\d x\d t,\label{eq:p1-ibp-transport}
+\end{align}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align}
+\int_{0}^{T}\int_{0}^{L}m\widehat{u}_{x}p_{x}\d x\d t & =\int_{0}^{T}\left[m\widehat{u}p_{x}\right]_{0}^{L}\d t-\int_{0}^{T}\int_{0}^{L}\left(mp_{x}\right)_{x}\widehat{u}\d x\d t\nonumber \\
+ & =-\int_{0}^{T}\int_{0}^{L}\left(mp_{x}\right)_{x}\widehat{u}\d x\d t.\label{eq:p1-ibp-viscosity}
+\end{align}
+
+\end_inset
+
+A combination of Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1-lagrangian"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1-ibp-time"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1-ibp-transport"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p1-ibp-viscosity"
+
+\end_inset
+
+ leads to 
+\series bold
+the adjoint equation in the weak form
+\series default
+
+\begin_inset Formula 
+\begin{multline}
+0=\delta_{u}\cL=\int_{0}^{T}\int_{0}^{L}\widehat{u}\left[\left(u-d\right)\boldsymbol{1}_{t\ge T_{1}}-p_{t}+u_{x}p-\left(up\right)_{x}-\left(mp_{x}\right)_{x}\right]\d x\d t\\
++\int_{0}^{L}\left[\widehat{u}p\right]^{T}\d x-\int_{0}^{T}\left[n\cdot\left(m\widehat{u}_{x}\right)\right]_{0}^{L}p\d t\label{eq:p1-dudL}
+\end{multline}
+
+\end_inset
+
+holds for all 
+\begin_inset Formula $\widehat{u}\in H^{1}$
+\end_inset
+
+ which satisfies the same BC and IC of 
+\begin_inset Formula $u$
+\end_inset
+
+.
+ The three terms leads to corresponding components of 
+\series bold
+the adjoint equation in the strong form
+\series default
+:
+\end_layout
+
+\begin_layout Enumerate
+In 
+\begin_inset Formula $\left(0,L\right)\times\left(0,T\right)$
+\end_inset
+
+, the differential equation 
+\begin_inset Formula $\left(u-d\right)\boldsymbol{1}_{t\ge T_{1}}-p_{t}+u_{x}p-\left(up\right)_{x}-\left(mp_{x}\right)_{x}=0$
+\end_inset
+
+ holds, i.e.
+\begin_inset Formula 
+\begin{align*}
+-p_{t}-up_{x}-\left(mp_{x}\right)_{x} & =0 & t<T_{1},\\
+-p_{t}-up_{x}-\left(mp_{x}\right)_{x} & =-\left(u-d\right) & t\ge T_{1}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The second term 
+\begin_inset Formula $\int_{0}^{L}\left[\widehat{u}p\right]^{T}\d x$
+\end_inset
+
+ leads to the terminal condition 
+\begin_inset Formula $p\left(\cdot,T\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+The third term 
+\begin_inset Formula $\int_{0}^{T}\left[n\cdot\left(m\widehat{u}_{x}\right)\right]_{0}^{L}p\d t$
+\end_inset
+
+ leads to the BC 
+\begin_inset Formula $p\left(0,\cdot\right)=p\left(L,\cdot\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+With these elements established, we can move on to the gradient:
+\begin_inset Formula 
+\[
+\delta_{m}\cL\left(\widehat{m}\right)=\int_{0}^{T}\int_{0}^{L}\widehat{m}u_{x}p_{x}\d x\d t+\beta\int_{0}^{L}m_{x}\widehat{m}_{x}\d x
+\]
+
+\end_inset
+
+(notice that the 
+\begin_inset Formula $\int_{0}^{T}\left[n\cdot\left(\widehat{m}u_{x}\right)\right]_{0}^{L}p\d t$
+\end_inset
+
+ term vanishes due to BC on 
+\begin_inset Formula $p$
+\end_inset
+
+).
+ The strong form of the gradient reads
+\begin_inset Formula 
+\[
+\delta_{m}\cL=\int_{0}^{T}u_{x}p_{x}\d t-\beta m_{xx}+\beta\left(m_{x}\delta_{x=L}-m_{x}\delta_{x=0}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Inverse advection-diffusion inverse problem, continued from Assignment 4
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+We would like to solve the inverse problem for the advection-diffusion-reaction
+ equation we discussed in class, on the domain 
+\begin_inset Formula $\Omega=\left[0,1\right]\times\left[0,1\right]$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{equation}
+\min_{m}\cF\left(m\right):=\frac{1}{2}\int_{\Omega}\left(u-d\right)^{2}\d x+\frac{\beta}{2}\int_{\Omega}\nabla m\cdot\nabla m\d x,\label{eq:p2-misfit}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $u\left(x\right)$
+\end_inset
+
+ depends on 
+\begin_inset Formula $m\left(x\right)$
+\end_inset
+
+ via
+\begin_inset Formula 
+\begin{align}
+-\nabla\cdot\left(k\nabla u\right)+v\cdot\nabla u+100\exp\left(m\right)u^{3} & =f & \text{in}\ \Omega,\label{eq:p2-diff-eqn}\\
+u & =0 & \text{on}\ \partial\Omega.\nonumber 
+\end{align}
+
+\end_inset
+
+We synthesize the measurement data 
+\begin_inset Formula $d\left(x\right)$
+\end_inset
+
+ by solving the forward advection-diffusion-reaction equation with the “true”
+ reaction coefficient field
+\begin_inset Formula 
+\[
+m\left(x,y\right)=\begin{cases}
+4 & \text{if}\ \left(x-0.5\right)^{2}+\left(y-0.5\right)^{2}\le0.2^{2}\\
+8 & \text{otherwise}
+\end{cases}
+\]
+
+\end_inset
+
+for 
+\begin_inset Formula $f\left(x,y\right)=\max\left\{ 0.5,\exp\left(-25\left(x-0.7\right)^{2}-25\left(y-0.7\right)^{2}\right)\right\} ,k=1$
+\end_inset
+
+ and 
+\begin_inset Formula $v=\left(1,0\right)^{T}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+First, we derive the adjoint equation and the gradient expression.
+ In fact, the Lagrangian associated with the gradient reads 
+\begin_inset Formula 
+\[
+\cL^{G}\left(u,m,p\right)=\cF\left(m\right)+\int_{\Omega}\left(k\nabla u\right)\cdot\nabla p\d x+\int_{\Omega}\left(v\cdot\nabla u\right)p\d x+\int_{\Omega}100\exp\left(m\right)u^{3}p\d x-\int_{\Omega}fp\d x,
+\]
+
+\end_inset
+
+so the adjoint reads
+\begin_inset Formula 
+\[
+-k\Delta p-\nabla\cdot\left(vp\right)+300\exp\left(m\right)u^{2}p=-\left(u-d\right),p\in H_{0}^{1}
+\]
+
+\end_inset
+
+and the assembled gradient is
+\begin_inset Formula 
+\[
+\left\langle \cG\left(m\right),\widehat{m}\right\rangle =\delta_{m}\cL^{G}=\beta\int_{\Omega}\nabla\widehat{m}\cdot\nabla m\d x+\int_{\Omega}100\exp\left(m\right)\widehat{m}u^{3}p\d x.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Derive weak and strong forms of the Hessian action for this problem.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The Lagrangian for Hessian reads (in the sense of 
+\begin_inset Formula $\int_{\Omega}\d x$
+\end_inset
+
+)
+\begin_inset Formula 
+\begin{align*}
+\cL^{H}\left(u,m,p;\widetilde{u},\widetilde{m},\widetilde{p}\right) & =\beta\nabla\widetilde{m}\cdot\nabla m+100\exp\left(m\right)\widetilde{m}u^{3}p\\
+ & \quad+k\nabla u\cdot\nabla\widetilde{p}+\left(v\cdot\nabla u\right)\widetilde{p}+100\exp\left(m\right)u^{3}\widetilde{p}-f\widetilde{p}\\
+ & \quad+\widetilde{u}\left(u-d\right)+k\nabla\widetilde{u}\cdot\nabla p+\left(v\cdot\nabla\widetilde{u}\right)p+300\exp\left(m\right)u^{2}\widetilde{u}p.
+\end{align*}
+
+\end_inset
+
+Thus, we have
+\end_layout
+
+\begin_layout Itemize
+The incremental forward problem is to solve 
+\begin_inset Formula $\widetilde{u}\in H_{0}^{1}\left(\Omega\right)$
+\end_inset
+
+ in weak form (in the sense of 
+\begin_inset Formula $\int_{\Omega}\d x$
+\end_inset
+
+)
+\begin_inset Formula 
+\begin{align*}
+0=\delta_{p}\cL^{H}\left(\widetilde{u},\widehat{p}\right)= & 100\exp\left(m\right)\widetilde{m}u^{3}\widehat{p}+k\nabla\widetilde{u}\cdot\nabla\widehat{p}\\
+ & \quad+\left(v\cdot\nabla\widetilde{u}\right)\widehat{p}+300\exp\left(m\right)u^{2}\widetilde{u}\widehat{p},\forall\widehat{p}\in H_{0}^{1}\left(\Omega\right)
+\end{align*}
+
+\end_inset
+
+and in strong form
+\begin_inset Formula 
+\[
+-k\Delta\widetilde{u}+v\cdot\nabla\widetilde{u}+300\exp\left(m\right)u^{2}\widetilde{u}=-100\exp\left(m\right)\widetilde{m}u^{3}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The incremental adjoint problem is to solve 
+\begin_inset Formula $\widetilde{p}\in H_{0}^{1}\left(\Omega\right)$
+\end_inset
+
+ in weak form (in the sense of 
+\begin_inset Formula $\int_{\Omega}\d x$
+\end_inset
+
+)
+\begin_inset Formula 
+\begin{align*}
+0=\delta_{u}\cL^{H}\left(\widetilde{u},\widehat{p}\right) & =k\nabla\widehat{u}\cdot\nabla\widetilde{p}+\left(v\cdot\nabla\widehat{u}\right)\widetilde{p}+300\exp\left(m\right)u^{2}\widehat{u}\widetilde{p}\\
+ & \quad+\widetilde{u}\widehat{u}+600\exp\left(m\right)u\widetilde{u}\widehat{u}p,\forall\widehat{u}\in H_{0}^{1}\left(\Omega\right)
+\end{align*}
+
+\end_inset
+
+and in strong form
+\begin_inset Formula 
+\[
+-k\Delta\widetilde{p}-\nabla\cdot\left(v\widetilde{p}\right)+300\exp\left(m\right)u^{2}\widetilde{p}=-\widetilde{u}-600\exp\left(m\right)u\widetilde{u}p.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The Hessian action is thus given by (in the sense of 
+\begin_inset Formula $\int_{\Omega}\d x$
+\end_inset
+
+)
+\begin_inset Formula 
+\begin{align*}
+\left\langle H\widetilde{m},\widehat{m}\right\rangle =\delta_{m}\cL & =\beta\nabla\widetilde{m}\cdot\nabla\widehat{m}+100\exp\left(m\right)\widehat{m}\widetilde{m}u^{3}p\\
+ & \quad+100\exp\left(m\right)\widehat{m}u^{3}\widetilde{p}+300\exp\left(m\right)\widehat{m}u^{2}\widetilde{u}p
+\end{align*}
+
+\end_inset
+
+or equivalently
+\begin_inset Formula 
+\[
+H\widetilde{m}=-\beta\Delta\widetilde{m}+100\exp\left(m\right)u^{2}\left(\widetilde{m}up+u\widetilde{p}+3\widetilde{u}p\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We point out that for Gauss-Newton approximation, the adjoint equation falls
+ to
+\begin_inset Formula 
+\[
+-k\Delta\widetilde{p}-\nabla\cdot\left(v\widetilde{p}\right)+300\exp\left(m\right)u^{2}\widetilde{p}=-\widetilde{u}
+\]
+
+\end_inset
+
+while the Hessian action now reads
+\begin_inset Formula 
+\[
+H\widetilde{m}=-\beta\Delta\widetilde{m}+100\exp\left(m\right)u^{3}\widetilde{p}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Extend 4.InexactNewtonCG.ipynb (the FEniCS implementation of the inexact Newton
+ and Gauss-Newton methods) to solve the advection-diffusion-reaction inverse
+ problem defined in Eqn.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p2-misfit"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:p2-diff-eqn"
+
+\end_inset
+
+.
+ Initialize the random generator seed by including the following line in
+ the beginning of the notebook: np.random.seed(seed=1).
+ Solve the inverse problem for discretizations of the domain with 20×20,
+ 40×40, and 80×80 finite elements, and report the numbers of Gauss-Newton
+ and total CG iterations for each case.
+ Note that the state and adjoint variables and their incremental variants
+ are discretized with quadratic finite elements, while the inversion parameter
+ (log diffusivity) field is discretized with linear elements.
+ Discuss how the number of iterations changes as the inversion parameter
+ mesh is refined, i.e., as the parameter dimension increases.
+ In these experiments, the noise level should be fixed to the default value
+ (1%) while the mesh is refined.
+ The 
+\begin_inset Quotes eld
+\end_inset
+
+optimal
+\begin_inset Quotes erd
+\end_inset
+
+ regularization parameter can be found manually (i.e., by experimenting with
+ a few different values and finding the one that results in a reconstruction
+ that best matches the “true” log field), or else by the discrepancy principle
+ (if you are so inclined).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+We demonstrate the recovered solution in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2-b"
+
+\end_inset
+
+.
+ It seems that 
+\begin_inset Formula $\beta=1e-9$
+\end_inset
+
+ yields the best recovered solution which balances the variation and not
+ sensitive to noise.
+ The Newton iterations slightly increases when 
+\begin_inset Formula $\beta$
+\end_inset
+
+ decreases or the mesh is finer, which agress with the mesh independency.
+ The CG iterations are also mesh independent, but significantly increases
+ as we have less regularization.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/m_true_n_20.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=20;gamma=1.0e-07;TN;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=20;gamma=1.0e-08;TN;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=20;gamma=1.0e-09;TN;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=20;gamma=1.0e-10;TN;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $n=20$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/m_true_n_40.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-07;TN;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-08;TN;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-09;TN;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-10;TN;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $n=40$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/m_true_n_80.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=80;gamma=1.0e-07;TN;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=80;gamma=1.0e-08;TN;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=80;gamma=1.0e-09;TN;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=80;gamma=1.0e-10;TN;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $n=80$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+True log field (leftmost column) and recovered field using Tikhonov regularizati
+on.
+ The three rows show the cases where 
+\begin_inset Formula $n=20,40,80$
+\end_inset
+
+ correspondingly.
+ The iterations carried out are marked on top of each figure, with the first
+ number indicating the total newton iterations and the second for total
+ CG iterations.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p2-b"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Optional, for extra credit: Fix the mesh size to 40×40 and consider two
+ noise levels: low noise (1%) and high noise (10%).
+ Determine the “optimal” regularization parameter in each case.
+ For each noise level, solve the inverse problem by both Newton and Gauss-Newton
+ methods.
+ Report the number of nonlinear (Newton/Gauss Newton) and total linear (CG)
+ iterations.
+ Draw conclusions on the relative performance of Newton and Gauss-Newton
+ as a function of the noise level.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+We list the the recovered field under different noise levels in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2-c"
+
+\end_inset
+
+.
+ Both methods yield similar results and the effect of regularization is
+ much more noticeable for larger noises.
+ We also plot the iterations needed for each scenario in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2-c-1"
+
+\end_inset
+
+.
+ In general, it requires more iterations when higher level of noise is encounter
+ed (blue > red) and Newton method requires slightly less iterations than
+ Gauss-Newton method, which is most significant for large noise.
+ The CG iterations are in general much larger than Newton iterations.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-07;TN;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-08;TN;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-09;TN;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-10;TN;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+noise level: 1%, Gauss-Newton
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-07;TN;noise=0.01;N/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-08;TN;noise=0.01;N/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-09;TN;noise=0.01;N/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-10;TN;noise=0.01;N/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+noise level: 1%, Newton
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-07;TN;noise=0.10;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-08;TN;noise=0.10;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-09;TN;noise=0.10;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-10;TN;noise=0.10;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+noise level: 10%, Gauss-Newton
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-07;TN;noise=0.10;N/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-08;TN;noise=0.10;N/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-09;TN;noise=0.10;N/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-10;TN;noise=0.10;N/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+noise level: 10%, Newton
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Recovered field using Tikhonov regularization with Gauss-Newton or Newton
+ method.
+ The iterations carried out are marked on top of each figure, with the first
+ number indicating the total newton iterations and the second for total
+ CG iterations.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p2-c"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /home/xdroid/Documents/archived/2021-1 (2021 Fall)/CSE397/fenics/hw5/plot/itr.jpg
+	width 50line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p2-c-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Optional, for extra credit: Replace Tikhonov regularization with total variation
+ regularization and repeat sub-problem 2 above (i.e., report number of Gauss-Newto
+n and CG iterations as the mesh is refined).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+As shown in Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2-d"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, we repeat the tests with TV regularization and observe that in general
+ the recovered solution has sharper boundaries.
+ 
+\begin_inset Formula $\beta=1e-9$
+\end_inset
+
+ seems to yield the best recovered field.
+ However, the Newton method fails to converges (in terms of the stopping
+ criterion) no matter what regularization parameter is used.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/m_true_n_20.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=20;gamma=1.0e-07;TV;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=20;gamma=1.0e-08;TV;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=20;gamma=1.0e-09;TV;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=20;gamma=1.0e-10;TV;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $n=20$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/m_true_n_40.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-07;TV;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-08;TV;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-09;TV;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=40;gamma=1.0e-10;TV;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $n=40$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/m_true_n_80.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=80;gamma=1.0e-07;TV;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=80;gamma=1.0e-08;TV;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=80;gamma=1.0e-09;TV;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../fenics/hw5/plot/n=80;gamma=1.0e-10;TV;noise=0.01;GN/m_recovered.jpg
+	height 20line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $n=80$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+True log field (leftmost column) and recovered field using TV regularization.
+ The three rows show the cases where 
+\begin_inset Formula $n=20,40,80$
+\end_inset
+
+ correspondingly.
+ The iterations carried out are marked on top of each figure, with the first
+ number indicating the total newton iterations and the second for total
+ CG iterations.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p2-d"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsection*
+Appendix
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+I convert the jupyter notebook into PDF files and attach them below.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset External
+	template PDFPages
+	filename hw5-nb.pdf
+	extra LaTeX "pages=-"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
